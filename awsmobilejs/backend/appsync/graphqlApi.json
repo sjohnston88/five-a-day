@@ -1,0 +1,4 @@
+{
+    "name": "five-a-day-app",
+    "authenticationType": "AWS_IAM"
+}
