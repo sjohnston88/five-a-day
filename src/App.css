@@ -1,7 +1,7 @@
 .App {
   margin: 0 auto;
   height: 100%;
-  width: 600px;
+  width: 100%;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }

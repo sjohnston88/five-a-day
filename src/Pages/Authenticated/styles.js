@@ -62,7 +62,7 @@ export const HeadsUpDisplay = glamorous.div({
 
 export const AchievementContainer = glamorous.div({
   display: "flex",
-  padding: "20px 30px 0 30px"
+  padding: "20px 0 0 0"
 });
 
 export const PreviousDay = glamorous.div({
@@ -75,7 +75,7 @@ export const PreviousDay = glamorous.div({
 export const CurrentDay = glamorous.div({
   margin: "0 auto",
   display: "flex",
-  flex: "90%",
+  flex: "80%",
   justifyContent: "space-around"
 });
 
@@ -108,8 +108,7 @@ export const BigText = glamorous.span({
 
 export const SearchContainer = glamorous.div({
   background: "#fff",
-  overflow: "scroll",
-  height: "46vw"
+  height: "100%"
 });
 export const SearchBar = glamorous.input({
   backgroundImage: `url(${SearchIcon})`,
@@ -126,7 +125,7 @@ export const SearchBar = glamorous.input({
 });
 export const ItemList = glamorous.div({
   width: "100%",
-  height: "46vw",
+  height: "100%",
   borderBottom: "1px solid #ccc",
   overflow: "scroll"
 });
@@ -152,6 +151,7 @@ export const AddButton = glamorous.button({
   backgroundImage: `url(${AddButtonIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "30px 30px",
+  backgroundColor: "#fff",
   border: "none",
   outline: "none"
 });
@@ -163,6 +163,7 @@ export const RemoveButton = glamorous.button({
   backgroundImage: `url(${RemoveButtonIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "30px 30px",
+  backgroundColor: "#fff",
   border: "none",
   outline: "none"
 });

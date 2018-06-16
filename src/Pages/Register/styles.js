@@ -17,13 +17,13 @@ export const Container = glamorous.div({
 
 export const RegisterContainer = glamorous.div({
   width: "100%",
-  padding: "0px 12% 0 12%"
+  padding: "0px 8% 0 8%"
 });
 
 export const HelpContainer = glamorous.div({
   width: "100%",
   display: "flex",
-  padding: "0px 12% 15px 12%"
+  padding: "0px 8% 15px 8%"
 });
 
 export const Logo = glamorous.img({
@@ -77,7 +77,8 @@ export const PasswordInput = glamorous.input({
   letterSpacing: "0.5",
   color: "#000",
   border: "1px solid #ccc",
-  borderBottom: "none"
+  borderBottom: "none",
+  borderTop: "none"
 });
 
 export const ConfirmPasswordInput = glamorous.input({

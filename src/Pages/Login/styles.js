@@ -18,18 +18,18 @@ export const Container = glamorous.div({
 
 export const LoginContainer = glamorous.div({
   width: "100%",
-  padding: "0px 12% 15px 12%"
+  padding: "0px 8% 15px 8%"
 });
 
 export const SocialLoginContainer = glamorous.div({
   width: "100%",
-  padding: "0px 12% 15px 12%"
+  padding: "0px 8% 15px 8%"
 });
 
 export const HelpContainer = glamorous.div({
   width: "100%",
   display: "flex",
-  padding: "0px 12% 15px 12%"
+  padding: "0px 8% 15px 8%"
 });
 
 export const Logo = glamorous.img({
@@ -99,14 +99,14 @@ export const FacebookButton = glamorous.a({
   backgroundImage: `url(${FacebookIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "22px 22px",
-  backgroundPosition: "116px 13px",
+  backgroundPosition: "20% 13px",
   display: "block",
   outline: "none",
   margin: "25px 0 10px",
   boxSizing: "border-box",
   width: "100%",
   backgroundColor: "#3B5998",
-  padding: "15px 20px 15px 150px",
+  padding: "15px 20px 15px 30%",
   fontSize: "16px",
   letterSpacing: "1.2",
   textDecoration: "none",
@@ -120,14 +120,14 @@ export const GoogleButton = glamorous.a({
   backgroundImage: `url(${GoogleIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "22px 22px",
-  backgroundPosition: "116px 14px",
+  backgroundPosition: "20% 14px",
   display: "block",
   outline: "none",
   margin: "0 0 15px 0",
   boxSizing: "border-box",
   width: "100%",
   backgroundColor: "#dd4b39",
-  padding: "15px 20px 15px 150px",
+  padding: "15px 20px 15px 30%",
   fontSize: "16px",
   letterSpacing: "1.2",
   textDecoration: "none",

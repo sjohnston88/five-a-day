@@ -44,7 +44,7 @@ class Authenticated extends Component {
             <PreviousDay />
             <CurrentDay>
               <SemiCircleProgressBar
-                diameter={300}
+                diameter={260}
                 percentage={60}
                 strokeWidth={15}
                 stroke="darkorange"
