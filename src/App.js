@@ -6,6 +6,7 @@ import Register from "./Pages/Register";
 import ForgottenPassword from "./Pages/ForgottenPassword";
 import MyAccount from "./Pages/MyAccount";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import ChangePassword from "./Pages/ChangePassword";
 import Amplify from "aws-amplify";
 import aws_exports from "./aws-exports";
 import "./App.css";
@@ -21,6 +22,7 @@ const App = () => (
       <Route path="/forgotten-password" component={ForgottenPassword} />
       <Route path="/my-account" component={MyAccount} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/change-password" component={ChangePassword} />
     </div>
   </Router>
 );

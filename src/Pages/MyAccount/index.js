@@ -35,7 +35,10 @@ class MyAccount extends Component {
           <option>cm / g</option>
         </UnitToggleSwitch>
         <SectionTitle>Account Preferences</SectionTitle>
-        <ChangePassword> Change Password</ChangePassword>
+        <ChangePassword href="./change-password">
+          {" "}
+          Change Password
+        </ChangePassword>
         <PrivacyPolicy href="./privacy-policy"> Privacy Policy </PrivacyPolicy>
         <LogOut href="./">Logout</LogOut>
       </Container>
