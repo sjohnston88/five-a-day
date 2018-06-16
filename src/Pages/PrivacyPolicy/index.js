@@ -21,7 +21,7 @@ class PrivacyPolicy extends Component {
             My Account
           </MyAccount>
         </HeaderContainer>
-        <SectionTitle>Fruits &amp; Veggies Privacy Policy</SectionTitle>
+        <SectionTitle>Our Privacy Policy</SectionTitle>
         <PrivacyPolicyText>
           Bacon ipsum dolor amet frankfurter bacon pork belly corned beef cow.
           Alcatra sirloin ribeye bacon frankfurter boudin pork belly ham. Cupim

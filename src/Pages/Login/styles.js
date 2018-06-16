@@ -23,7 +23,7 @@ export const LoginContainer = glamorous.div({
 
 export const SocialLoginContainer = glamorous.div({
   width: "100%",
-  padding: "0px 8% 15px 8%"
+  padding: "0px 8% 0px 8%"
 });
 
 export const HelpContainer = glamorous.div({
@@ -33,7 +33,7 @@ export const HelpContainer = glamorous.div({
 });
 
 export const Logo = glamorous.img({
-  width: "150px",
+  width: "120px",
   display: "block",
   margin: "20px auto 40px auto"
 });
@@ -99,14 +99,14 @@ export const FacebookButton = glamorous.a({
   backgroundImage: `url(${FacebookIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "22px 22px",
-  backgroundPosition: "20% 13px",
+  backgroundPosition: "10% 13px",
   display: "block",
   outline: "none",
   margin: "25px 0 10px",
   boxSizing: "border-box",
   width: "100%",
   backgroundColor: "#3B5998",
-  padding: "15px 20px 15px 30%",
+  padding: "15px 10px 15px 25%",
   fontSize: "16px",
   letterSpacing: "1.2",
   textDecoration: "none",
@@ -120,14 +120,14 @@ export const GoogleButton = glamorous.a({
   backgroundImage: `url(${GoogleIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "22px 22px",
-  backgroundPosition: "21% 14px",
+  backgroundPosition: "11% 14px",
   display: "block",
   outline: "none",
   margin: "0 0 15px 0",
   boxSizing: "border-box",
   width: "100%",
   backgroundColor: "#dd4b39",
-  padding: "15px 20px 15px 30%",
+  padding: "15px 20px 15px 25%",
   fontSize: "16px",
   letterSpacing: "1.2",
   textDecoration: "none",
@@ -139,8 +139,8 @@ export const GoogleButton = glamorous.a({
 
 export const ForgottenPassword = glamorous.a({
   display: "block",
-  padding: "0 0 0 10px",
-  width: "50%",
+  width: "45%",
+  fontSize: "14px",
   textDecoration: "none",
   color: "#CCC",
   textAlign: "left"
@@ -149,7 +149,8 @@ export const ForgottenPassword = glamorous.a({
 export const CreateAnAccount = glamorous.a({
   display: "block",
   padding: "0 10px 0 0",
-  width: "50%",
+  width: "55%",
+  fontSize: "14px",
   textDecoration: "underline",
   color: "#CCC",
   textAlign: "right"

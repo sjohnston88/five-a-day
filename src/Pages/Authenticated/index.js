@@ -58,128 +58,120 @@ class Authenticated extends Component {
           </DisplayedTotal>
         </HeadsUpDisplay>
         <SearchContainer>
-          <SearchBar placeholder="Search for fruits and vegetables" />
+          <SearchBar placeholder="Search" />
           <ItemList>
             <Item>
               <ItemImage />
               <ItemTitle>Raspberries</ItemTitle>
-              <ItemAmount>You need to eat 7 raspberries to count</ItemAmount>
+              <ItemAmount>Eat 7 raspberries to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
               <RemoveButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Carrot</ItemTitle>
-              <ItemAmount>You need to eat 1 carrot to count</ItemAmount>
+              <ItemAmount>Eat 1 carrot to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Orange</ItemTitle>
-              <ItemAmount>You need to eat 1 orange to count</ItemAmount>
+              <ItemAmount>Eat 1 orange to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Cucumber</ItemTitle>
-              <ItemAmount>
-                You need to eat 1 inch of cucumber to count
-              </ItemAmount>
+              <ItemAmount>Eat 1 inch of cucumber to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Orange</ItemTitle>
-              <ItemAmount>You need to eat 1 orange to count</ItemAmount>
+              <ItemAmount>Eat 1 orange to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Cucumber</ItemTitle>
-              <ItemAmount>
-                You need to eat 1 inch of cucumber to count
-              </ItemAmount>
+              <ItemAmount>Eat 1 inch of cucumber to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Orange</ItemTitle>
-              <ItemAmount>You need to eat 1 orange to count</ItemAmount>
+              <ItemAmount>Eat 1 orange to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Cucumber</ItemTitle>
-              <ItemAmount>
-                You need to eat 1 inch of cucumber to count
-              </ItemAmount>
+              <ItemAmount>Eat 1 inch of cucumber to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Orange</ItemTitle>
-              <ItemAmount>You need to eat 1 orange to count</ItemAmount>
+              <ItemAmount>Eat 1 orange to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Cucumber</ItemTitle>
-              <ItemAmount>
-                You need to eat 1 inch of cucumber to count
-              </ItemAmount>
+              <ItemAmount>Eat 1 inch of cucumber to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
               <AddButton />
             </Item>
             <Item>
               <ItemImage />
               <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
               <AddButton />
             </Item>
           </ItemList>
