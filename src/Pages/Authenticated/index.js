@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import SemiCircleProgressBar from "react-progressbar-semicircle";
 
 import {
@@ -62,8 +62,17 @@ export class Authenticated extends React.Component {
 
   handleRemoveItem = item => {
     this.setState({
-      currentDay: this.state.currentDay.filter(function(items) {
+      currentDay: this.state.currentDay.filter(items => {
         return items !== item;
+      })
+    });
+  };
+
+  search = event => {
+    console.log(event.target.value);
+    this.setState({
+      applicationData: this.state.applicationData.find(searchResults => {
+        return searchResults.name !== event.target.value;
       })
     });
   };
@@ -99,7 +108,7 @@ export class Authenticated extends React.Component {
           </DisplayedTotal>
         </HeadsUpDisplay>
         <SearchContainer>
-          <SearchBar placeholder="Search" />
+          <SearchBar placeholder="Search" onChange={e => this.search(e)} />
           <ItemList>
             {this.state.applicationData.map(item => (
               <Item key={item.key}>
@@ -108,7 +117,6 @@ export class Authenticated extends React.Component {
                 <ItemAmount>
                   Eat {item.amount} {item.name} to count
                 </ItemAmount>
-                {console.log(this.state.currentDay[`${item.name}`])}
                 {this.state.currentDay.indexOf(`${item.name}`) > -1 ? (
                   <RemoveButton
                     onClick={() => this.handleRemoveItem(item.name)}

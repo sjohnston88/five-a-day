@@ -126,12 +126,17 @@ export const SearchBar = glamorous.input({
   outline: "none"
 });
 export const ItemList = glamorous.div({
+  margin: "0",
+  paddingBottom: "100%",
+  position: "relative",
   width: "100%",
   height: "100%",
   borderBottom: "1px solid #ccc",
   overflow: "scroll"
 });
 export const Item = glamorous.div({
+  position: "relative",
+  height: "75px",
   borderTop: "1px solid #ccc",
   padding: "15px 20px 15px 60px"
 });

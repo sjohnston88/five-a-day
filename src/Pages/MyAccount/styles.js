@@ -84,12 +84,26 @@ export const UnitToggleSwitch = glamorous.select({
   backgroundColor: "#fff",
   display: "block",
   width: "100%",
-  padding: "15px 10px",
+  padding: "15px 20px",
   textAlign: "right",
   textAlignLast: "right",
   textDecoration: "none",
   fontSize: "16px",
-  color: "#666",
+  color: "#a9a9a9",
+  border: "none"
+});
+
+export const Option = glamorous.option({
+  appearance: "none",
+  backgroundColor: "#fff",
+  display: "block",
+  width: "100%",
+  padding: "15px 20px",
+  textAlign: "right",
+  textAlignLast: "right",
+  textDecoration: "none",
+  fontSize: "16px",
+  color: "#a9a9a9",
   border: "none"
 });
 

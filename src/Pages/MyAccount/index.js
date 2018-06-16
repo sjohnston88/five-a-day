@@ -10,6 +10,7 @@ import {
   NameInput,
   EmailInput,
   UnitToggleSwitch,
+  Option,
   ChangePassword,
   PrivacyPolicy,
   LogOut
@@ -31,8 +32,8 @@ class MyAccount extends Component {
         <EmailInput placeholder="E-mail address" />
         <SectionTitle>Units &amp; Measures</SectionTitle>
         <UnitToggleSwitch>
-          <option>Inches / Oz</option>
-          <option>cm / g</option>
+          <Option>Inches / Oz</Option>
+          <Option>cm / g</Option>
         </UnitToggleSwitch>
         <SectionTitle>Account Preferences</SectionTitle>
         <ChangePassword href="./change-password">
