@@ -1,13 +1,106 @@
 import glamorous from "glamorous";
+import MyAccountIconImage from "../../Images/outline-account_box-24px.svg";
+import ArrowForward from "../../Images/outline-arrow_forward_ios-24px.svg";
+import ArrowBack from "../../Images/outline-arrow_back_ios-24px.svg";
 
-export const Container = glamorous.div({});
-export const HeaderContainer = glamorous.div({});
-export const Logo = glamorous.div({});
-export const MyAccount = glamorous.div({});
-export const AchievementContainer = glamorous.div({});
-export const PreviousDay = glamorous.div({});
-export const CurrentDay = glamorous.div({});
-export const Nextday = glamorous.div({});
+export const Container = glamorous.div({
+  margin: "0 auto",
+  fontFamily: "'Roboto', sans-serif",
+  background: "linear-gradient(rgba(238,238,238,1), rgba(204,204,204,1))",
+  backgroundPosition: "top center",
+  maxWidth: "600px",
+  width: "100%",
+  height: "100%",
+  padding: "10px"
+});
+export const HeaderContainer = glamorous.div({
+  display: "flex",
+  padding: "10px 20px",
+  width: "100%",
+  height: "50px"
+});
+
+export const Logo = glamorous.div({
+  flex: "50%",
+  textAlign: "left",
+  fontSize: "14px",
+  color: "#666"
+});
+
+export const MyAccount = glamorous.a({
+  flex: "50%",
+  textDecoration: "none",
+  textAlign: "right",
+  fontSize: "14px",
+  color: "#666"
+});
+
+export const MyAccountIcon = glamorous.div({
+  margin: "-1px 0 0 5px",
+  backgroundImage: `url(${MyAccountIconImage})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "18px 18px",
+  float: "right",
+  width: "18px",
+  height: "18px"
+});
+
+export const DisplayedDate = glamorous.div({
+  width: "100%",
+  padding: "10px 0 0px 0",
+  textDecoration: "none",
+  textAlign: "center",
+  fontSize: "16px",
+  color: "#666"
+});
+
+export const HeadsUpDisplay = glamorous.div({});
+export const AchievementContainer = glamorous.div({
+  display: "flex",
+  padding: "20px 20px 0 20px"
+});
+
+export const PreviousDay = glamorous.div({
+  flex: "5%",
+  backgroundImage: `url(${ArrowBack})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "34px 140px"
+});
+
+export const CurrentDay = glamorous.div({
+  margin: "0 auto",
+  display: "flex",
+  flex: "90%",
+  justifyContent: "space-around"
+});
+
+export const Nextday = glamorous.div({
+  flex: "5%",
+  backgroundImage: `url(${ArrowForward})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "34px 140px"
+});
+
+export const DisplayedTotal = glamorous.div({
+  textDecoration: "none",
+  letterSpacing: "1.2",
+  textAlign: "center",
+  fontSize: "20px",
+  color: "#666"
+});
+
+export const DisplayedType = glamorous.div({
+  textDecoration: "none",
+  letterSpacing: "1.2",
+  textAlign: "center",
+  fontSize: "16px",
+  color: "#666"
+});
+
+export const BigText = glamorous.span({
+  fontSize: "36px"
+});
+
 export const ManageContainer = glamorous.div({});
 export const AddSomething = glamorous.div({});
 export const RemoveSomething = glamorous.div({});

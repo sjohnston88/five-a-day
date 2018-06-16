@@ -57,6 +57,7 @@ export const ResetPassword = glamorous.a({
   padding: "15px",
   fontSize: "16px",
   letterSpacing: "1.2",
+  textDecoration: "none",
   textAlign: "center",
   color: "#fff",
   border: "1px solid #333",
