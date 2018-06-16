@@ -16,14 +16,16 @@ import {
   DisplayedType,
   DisplayedTotal,
   BigText,
-  ManageContainer,
-  AddSomething,
-  RemoveSomething,
-  Statistics,
-  Information
+  SearchContainer,
+  SearchBar,
+  ItemList,
+  Item,
+  ItemImage,
+  ItemTitle,
+  ItemAmount,
+  AddButton,
+  RemoveButton
 } from "./styles";
-var ProgressBar = require("react-progressbar.js");
-var Circle = ProgressBar.Circle;
 
 class Authenticated extends Component {
   render() {
@@ -31,7 +33,7 @@ class Authenticated extends Component {
       <Container>
         <HeaderContainer>
           <Logo>Fruits &amp; Veggies</Logo>
-          <MyAccount href="./">
+          <MyAccount href="./my-account">
             <MyAccountIcon />
             My Account
           </MyAccount>
@@ -55,12 +57,55 @@ class Authenticated extends Component {
             <DisplayedType>Fruits and Vegetables</DisplayedType>
           </DisplayedTotal>
         </HeadsUpDisplay>
-        <ManageContainer>
-          <AddSomething />
-          <RemoveSomething />
-          <Statistics />
-          <Information />
-        </ManageContainer>
+        <SearchContainer>
+          <SearchBar placeholder="Search for fruits and vegetables" />
+          <ItemList>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Raspberries</ItemTitle>
+              <ItemAmount>You need to eat 7 raspberries to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Strawberries</ItemTitle>
+              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <RemoveButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Carrot</ItemTitle>
+              <ItemAmount>You need to eat 1 carrot to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Orange</ItemTitle>
+              <ItemAmount>You need to eat 1 orange to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Cucumber</ItemTitle>
+              <ItemAmount>
+                You need to eat 1 inch of cucumber to count
+              </ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Strawberries</ItemTitle>
+              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Strawberries</ItemTitle>
+              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <AddButton />
+            </Item>
+          </ItemList>
+        </SearchContainer>
       </Container>
     );
   }

@@ -2,6 +2,9 @@ import glamorous from "glamorous";
 import MyAccountIconImage from "../../Images/outline-account_box-24px.svg";
 import ArrowForward from "../../Images/outline-arrow_forward_ios-24px.svg";
 import ArrowBack from "../../Images/outline-arrow_back_ios-24px.svg";
+import SearchIcon from "../../Images/outline-search-24px.svg";
+import AddButtonIcon from "../../Images/outline-add_circle_outline-24px.svg";
+import RemoveButtonIcon from "../../Images/outline-remove_circle_outline-24px.svg";
 
 export const Container = glamorous.div({
   margin: "0 auto",
@@ -10,12 +13,11 @@ export const Container = glamorous.div({
   backgroundPosition: "top center",
   maxWidth: "600px",
   width: "100%",
-  height: "100%",
-  padding: "10px"
+  height: "100%"
 });
 export const HeaderContainer = glamorous.div({
   display: "flex",
-  padding: "10px 20px",
+  padding: "20px 30px 10px 30px",
   width: "100%",
   height: "50px"
 });
@@ -54,10 +56,13 @@ export const DisplayedDate = glamorous.div({
   color: "#666"
 });
 
-export const HeadsUpDisplay = glamorous.div({});
+export const HeadsUpDisplay = glamorous.div({
+  padding: "10px 20px 40px 20px"
+});
+
 export const AchievementContainer = glamorous.div({
   display: "flex",
-  padding: "20px 20px 0 20px"
+  padding: "20px 30px 0 30px"
 });
 
 export const PreviousDay = glamorous.div({
@@ -101,8 +106,63 @@ export const BigText = glamorous.span({
   fontSize: "36px"
 });
 
-export const ManageContainer = glamorous.div({});
-export const AddSomething = glamorous.div({});
-export const RemoveSomething = glamorous.div({});
-export const Statistics = glamorous.div({});
-export const Information = glamorous.div({});
+export const SearchContainer = glamorous.div({
+  background: "#fff",
+  overflow: "hidden",
+  height: "46vw"
+});
+export const SearchBar = glamorous.input({
+  backgroundImage: `url(${SearchIcon})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "30px 30px",
+  backgroundPosition: "15px 16px",
+  width: "100%",
+  padding: "20px 20px 20px 60px",
+  fontSize: "18px",
+  letterSpacing: "0.5",
+  border: "none",
+  borderBottom: "1px solid #ccc",
+  outline: "none"
+});
+export const ItemList = glamorous.div({
+  width: "100%",
+  height: "46vw",
+  borderBottom: "1px solid #ccc",
+  overflow: "scroll"
+});
+export const Item = glamorous.div({
+  borderTop: "1px solid #ccc",
+  padding: "15px 20px 15px 60px"
+});
+export const ItemTitle = glamorous.p({
+  margin: "0",
+  fontSize: "18px"
+});
+export const ItemAmount = glamorous.p({
+  margin: "5px 0 0 0",
+  fontSize: "14px",
+  color: "#ccc"
+});
+export const ItemImage = glamorous.div({});
+export const AddButton = glamorous.button({
+  margin: "-36px 0",
+  float: "right",
+  width: "30px",
+  height: "30px",
+  backgroundImage: `url(${AddButtonIcon})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "30px 30px",
+  border: "none",
+  outline: "none"
+});
+export const RemoveButton = glamorous.button({
+  margin: "-36px 0",
+  float: "right",
+  width: "30px",
+  height: "30px",
+  backgroundImage: `url(${RemoveButtonIcon})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "30px 30px",
+  border: "none",
+  outline: "none"
+});
