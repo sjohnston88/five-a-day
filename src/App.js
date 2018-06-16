@@ -7,11 +7,7 @@ import ForgottenPassword from "./Pages/ForgottenPassword";
 import MyAccount from "./Pages/MyAccount";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import ChangePassword from "./Pages/ChangePassword";
-import Amplify from "aws-amplify";
-import aws_exports from "./aws-exports";
 import "./App.css";
-
-Amplify.configure(aws_exports);
 
 const App = () => (
   <Router>

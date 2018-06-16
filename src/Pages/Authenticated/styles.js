@@ -121,7 +121,7 @@ export const SearchBar = glamorous.input({
   fontSize: "18px",
   letterSpacing: "0.5",
   border: "none",
-  radiusBorder: "none",
+  borderRadius: "none",
   borderBottom: "1px solid #ccc",
   outline: "none"
 });
