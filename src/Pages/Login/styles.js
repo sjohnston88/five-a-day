@@ -10,7 +10,6 @@ export const Container = glamorous.div({
   fontFamily: "'Roboto', sans-serif",
   background: `linear-gradient(rgba(0, 0, 150, 0.2), rgba(0, 0, 50, 0.6)), url(${Background})`,
   backgroundPosition: "top center",
-  maxWidth: "600px",
   width: "100%",
   height: "100%",
   padding: "10px"
