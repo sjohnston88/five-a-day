@@ -27,12 +27,13 @@ export const HelpContainer = glamorous.div({
 });
 
 export const Logo = glamorous.img({
-  width: "150px",
+  width: "120px",
   display: "block",
   margin: "20px auto 40px auto"
 });
 
 export const NameInput = glamorous.input({
+  margin: 0,
   boxShadow: "0 0 3px rgba(0, 0, 0, 0.2) inset",
   backgroundImage: `url(${Avatar})`,
   backgroundRepeat: "no-repeat",
@@ -45,11 +46,13 @@ export const NameInput = glamorous.input({
   color: "#000",
   border: "1px solid #ccc",
   borderBottom: "none",
+  borderRadius: 0,
   borderTopLeftRadius: "5px",
   borderTopRightRadius: "5px"
 });
 
 export const EmailInput = glamorous.input({
+  margin: 0,
   boxShadow: "0 0 3px rgba(0, 0, 0, 0.2) inset",
   backgroundImage: `url(${MailOutline})`,
   backgroundRepeat: "no-repeat",
@@ -61,10 +64,13 @@ export const EmailInput = glamorous.input({
   letterSpacing: "0.5",
   color: "#000",
   border: "1px solid #ccc",
-  borderBottom: "none"
+  borderRadius: 0,
+  borderBottom: "none",
+  borderTop: "none"
 });
 
 export const PasswordInput = glamorous.input({
+  margin: 0,
   boxShadow: "0 0 3px rgba(0, 0, 0, 0.2) inset",
   backgroundImage: `url(${Lock})`,
   backgroundRepeat: "no-repeat",
@@ -77,11 +83,13 @@ export const PasswordInput = glamorous.input({
   letterSpacing: "0.5",
   color: "#000",
   border: "1px solid #ccc",
+  borderRadius: 0,
   borderBottom: "none",
   borderTop: "none"
 });
 
 export const ConfirmPasswordInput = glamorous.input({
+  margin: 0,
   boxShadow: "0 0 3px rgba(0, 0, 0, 0.2) inset",
   backgroundImage: `url(${Lock})`,
   backgroundRepeat: "no-repeat",
@@ -94,6 +102,8 @@ export const ConfirmPasswordInput = glamorous.input({
   letterSpacing: "0.5",
   color: "#000",
   border: "1px solid #ccc",
+  borderRadius: 0,
+  borderTop: "none",
   borderBottomLeftRadius: "5px",
   borderBottomRightRadius: "5px"
 });
@@ -117,8 +127,9 @@ export const RegisterButton = glamorous.a({
 
 export const Login = glamorous.a({
   display: "block",
-  padding: "0px 20px",
+  padding: "0px 10px",
   width: "100%",
+  fontSize: "14px",
   textDecoration: "underline",
   color: "#CCC",
   textAlign: "right"

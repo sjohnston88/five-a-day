@@ -25,7 +25,7 @@ export const HelpContainer = glamorous.div({
 });
 
 export const Logo = glamorous.img({
-  width: "150px",
+  width: "120px",
   display: "block",
   margin: "20px auto 40px auto"
 });
@@ -65,8 +65,9 @@ export const ResetPassword = glamorous.a({
 
 export const Login = glamorous.a({
   display: "block",
-  padding: "0px 20px",
+  padding: "0px 10px",
   width: "100%",
+  fontSize: "14px",
   textDecoration: "underline",
   color: "#CCC",
   textAlign: "right"

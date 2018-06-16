@@ -39,6 +39,7 @@ export const Logo = glamorous.img({
 });
 
 export const EmailInput = glamorous.input({
+  margin: 0,
   boxShadow: "0 0 3px rgba(0, 0, 0, 0.2) inset",
   backgroundImage: `url(${MailOutline})`,
   backgroundRepeat: "no-repeat",
@@ -51,11 +52,13 @@ export const EmailInput = glamorous.input({
   color: "#000",
   border: "1px solid #ccc",
   borderBottom: "none",
+  borderRadius: 0,
   borderTopLeftRadius: "5px",
   borderTopRightRadius: "5px"
 });
 
 export const PasswordInput = glamorous.input({
+  margin: 0,
   boxShadow: "0 0 3px rgba(0, 0, 0, 0.2) inset",
   backgroundImage: `url(${Lock})`,
   backgroundRepeat: "no-repeat",
@@ -68,6 +71,7 @@ export const PasswordInput = glamorous.input({
   letterSpacing: "0.5",
   color: "#000",
   border: "1px solid #ccc",
+  borderRadius: 0,
   borderBottomLeftRadius: "5px",
   borderBottomRightRadius: "5px"
 });
@@ -139,7 +143,8 @@ export const GoogleButton = glamorous.a({
 
 export const ForgottenPassword = glamorous.a({
   display: "block",
-  width: "45%",
+  padding: "0 0 0 10px",
+  width: "50%",
   fontSize: "14px",
   textDecoration: "none",
   color: "#CCC",
@@ -149,7 +154,7 @@ export const ForgottenPassword = glamorous.a({
 export const CreateAnAccount = glamorous.a({
   display: "block",
   padding: "0 10px 0 0",
-  width: "55%",
+  width: "50%",
   fontSize: "14px",
   textDecoration: "underline",
   color: "#CCC",

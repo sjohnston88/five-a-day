@@ -57,12 +57,12 @@ export const DisplayedDate = glamorous.div({
 });
 
 export const HeadsUpDisplay = glamorous.div({
-  padding: "10px 20px 40px 20px"
+  padding: "0 10px 20px 10px"
 });
 
 export const AchievementContainer = glamorous.div({
   display: "flex",
-  padding: "20px 0 0 0"
+  padding: "10px 0 0 0"
 });
 
 export const PreviousDay = glamorous.div({
