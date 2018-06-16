@@ -27,7 +27,47 @@ import {
   RemoveButton
 } from "./styles";
 
-class Authenticated extends Component {
+export class Authenticated extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      applicationData: [
+        { name: "Strawberries", amount: "7" },
+        { name: "Carrot", amount: "1" },
+        { name: "Cucumber", amount: "1 inch" },
+        { name: "Pumpkin", amount: "1 handful" },
+        { name: "Raspberies", amount: "7" },
+        { name: "Grapes", amount: "10" },
+        { name: "Cherries", amount: "8" },
+        { name: "Tomatoes", amount: "1" },
+        { name: "Red Bell Pepper", amount: "half" },
+        { name: "Orange", amount: "1" },
+        { name: "Apple", amount: "1" },
+        { name: "Chard", amount: "1 handful" }
+      ],
+      currentDay: ["Strawberries"],
+      searchTerm: ""
+    };
+  }
+
+  percentageCalculator = () => {
+    return this.state.currentDay.length * 20;
+  };
+
+  handleAddItem = item => {
+    this.setState(prevState => ({
+      currentDay: [...prevState.currentDay, item]
+    }));
+  };
+
+  handleRemoveItem = item => {
+    this.setState({
+      currentDay: this.state.currentDay.filter(function(items) {
+        return items !== item;
+      })
+    });
+  };
+
   render() {
     return (
       <Container>
@@ -45,7 +85,7 @@ class Authenticated extends Component {
             <CurrentDay>
               <SemiCircleProgressBar
                 diameter={210}
-                percentage={60}
+                percentage={this.percentageCalculator()}
                 strokeWidth={15}
                 stroke="darkorange"
               />
@@ -53,127 +93,31 @@ class Authenticated extends Component {
             <Nextday />
           </AchievementContainer>
           <DisplayedTotal>
-            <BigText>3</BigText> of <BigText>5</BigText>
+            <BigText>{this.state.currentDay.length}</BigText> of{" "}
+            <BigText>5</BigText>
             <DisplayedType>Fruits and Vegetables</DisplayedType>
           </DisplayedTotal>
         </HeadsUpDisplay>
         <SearchContainer>
           <SearchBar placeholder="Search" />
           <ItemList>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Raspberries</ItemTitle>
-              <ItemAmount>Eat 7 raspberries to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
-              <RemoveButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Carrot</ItemTitle>
-              <ItemAmount>Eat 1 carrot to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Orange</ItemTitle>
-              <ItemAmount>Eat 1 orange to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Cucumber</ItemTitle>
-              <ItemAmount>Eat 1 inch of cucumber to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Orange</ItemTitle>
-              <ItemAmount>Eat 1 orange to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Cucumber</ItemTitle>
-              <ItemAmount>Eat 1 inch of cucumber to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Orange</ItemTitle>
-              <ItemAmount>Eat 1 orange to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Cucumber</ItemTitle>
-              <ItemAmount>Eat 1 inch of cucumber to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Orange</ItemTitle>
-              <ItemAmount>Eat 1 orange to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Cucumber</ItemTitle>
-              <ItemAmount>Eat 1 inch of cucumber to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
-              <AddButton />
-            </Item>
-            <Item>
-              <ItemImage />
-              <ItemTitle>Strawberries</ItemTitle>
-              <ItemAmount>Eat 7 strawberries to count</ItemAmount>
-              <AddButton />
-            </Item>
+            {this.state.applicationData.map(item => (
+              <Item key={item.key}>
+                <ItemImage />
+                <ItemTitle>{item.name}</ItemTitle>
+                <ItemAmount>
+                  Eat {item.amount} {item.name} to count
+                </ItemAmount>
+                {console.log(this.state.currentDay[`${item.name}`])}
+                {this.state.currentDay.indexOf(`${item.name}`) > -1 ? (
+                  <RemoveButton
+                    onClick={() => this.handleRemoveItem(item.name)}
+                  />
+                ) : (
+                  <AddButton onClick={() => this.handleAddItem(item.name)} />
+                )}
+              </Item>
+            ))}
           </ItemList>
         </SearchContainer>
       </Container>
