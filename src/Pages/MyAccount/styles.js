@@ -13,7 +13,7 @@ export const Container = glamorous.div({
 
 export const HeaderContainer = glamorous.div({
   display: "flex",
-  padding: "20px 30px 10px 30px",
+  padding: "20px 20px 10px 20px",
   width: "100%",
   height: "50px"
 });
@@ -44,42 +44,47 @@ export const HomeIcon = glamorous.div({
 });
 
 export const SectionTitle = glamorous.p({
-  padding: "0 30px",
+  padding: "0 20px",
   textAlign: "left",
   fontSize: "16px",
   color: "#666"
 });
 
 export const NameInput = glamorous.input({
+  margin: 0,
   backgroundColor: "#fff",
   display: "block",
   width: "100%",
-  padding: "15px 30px",
+  padding: "15px 20px",
   textAlign: "left",
   textDecoration: "none",
   fontSize: "16px",
   color: "#666",
   border: "none",
+  borderRadius: "none",
   borderBottom: "1px solid #ccc"
 });
 
 export const EmailInput = glamorous.input({
-  backgroundColor: "#fff",
-  display: "block",
-  width: "100%",
-  padding: "15px 30px",
-  textAlign: "left",
-  textDecoration: "none",
-  fontSize: "16px",
-  color: "#666",
-  border: "none"
-});
-
-export const UnitToggleSwitch = glamorous.select({
+  margin: 0,
   backgroundColor: "#fff",
   display: "block",
   width: "100%",
   padding: "15px 20px",
+  textAlign: "left",
+  textDecoration: "none",
+  fontSize: "16px",
+  color: "#666",
+  border: "none",
+  borderRadius: "none"
+});
+
+export const UnitToggleSwitch = glamorous.select({
+  appearance: "none",
+  backgroundColor: "#fff",
+  display: "block",
+  width: "100%",
+  padding: "15px 10px",
   textAlign: "right",
   textAlignLast: "right",
   textDecoration: "none",

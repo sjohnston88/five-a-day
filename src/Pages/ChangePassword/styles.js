@@ -13,7 +13,7 @@ export const Container = glamorous.div({
 
 export const HeaderContainer = glamorous.div({
   display: "flex",
-  padding: "20px 30px 10px 30px",
+  padding: "20px 20px 10px 20px",
   width: "100%",
   height: "50px"
 });
@@ -44,13 +44,14 @@ export const MyAccountIcon = glamorous.div({
 });
 
 export const SectionTitle = glamorous.p({
-  padding: "0 30px",
+  padding: "0 20px",
   textAlign: "left",
   fontSize: "16px",
   color: "#666"
 });
 
 export const PasswordInput = glamorous.input({
+  margin: " 0 auto",
   backgroundColor: "#fff",
   display: "block",
   width: "100%",
@@ -60,10 +61,12 @@ export const PasswordInput = glamorous.input({
   fontSize: "16px",
   color: "#666",
   border: "none",
-  borderBottom: "1px solid #ccc"
+  borderBottom: "1px solid #ccc",
+  borderRadius: "none"
 });
 
 export const ConfirmPasswordInput = glamorous.input({
+  margin: " 0 auto",
   backgroundColor: "#fff",
   display: "block",
   width: "100%",
@@ -72,6 +75,7 @@ export const ConfirmPasswordInput = glamorous.input({
   textDecoration: "none",
   fontSize: "16px",
   color: "#666",
+  borderRadius: "none",
   border: "none"
 });
 

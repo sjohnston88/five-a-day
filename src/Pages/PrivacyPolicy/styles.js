@@ -13,7 +13,7 @@ export const Container = glamorous.div({
 
 export const HeaderContainer = glamorous.div({
   display: "flex",
-  padding: "20px 30px 10px 30px",
+  padding: "20px 20px 10px 20px",
   width: "100%",
   height: "50px"
 });
@@ -44,7 +44,7 @@ export const MyAccountIcon = glamorous.div({
 });
 
 export const SectionTitle = glamorous.p({
-  padding: "0 30px",
+  padding: "0 20px",
   textAlign: "left",
   fontSize: "16px",
   color: "#666"

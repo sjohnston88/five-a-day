@@ -17,7 +17,7 @@ export const Container = glamorous.div({
 });
 export const HeaderContainer = glamorous.div({
   display: "flex",
-  padding: "20px 30px 10px 30px",
+  padding: "20px 20px 10px 20px",
   width: "100%",
   height: "50px"
 });
@@ -108,10 +108,10 @@ export const BigText = glamorous.span({
 
 export const SearchContainer = glamorous.div({
   background: "#fff",
-  overflow: "scroll",
   height: "100%"
 });
 export const SearchBar = glamorous.input({
+  margin: 0,
   backgroundImage: `url(${SearchIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "30px 30px",
@@ -121,6 +121,7 @@ export const SearchBar = glamorous.input({
   fontSize: "18px",
   letterSpacing: "0.5",
   border: "none",
+  radiusBorder: "none",
   borderBottom: "1px solid #ccc",
   outline: "none"
 });
