@@ -108,7 +108,7 @@ export const BigText = glamorous.span({
 
 export const SearchContainer = glamorous.div({
   background: "#fff",
-  overflow: "hidden",
+  overflow: "scroll",
   height: "46vw"
 });
 export const SearchBar = glamorous.input({

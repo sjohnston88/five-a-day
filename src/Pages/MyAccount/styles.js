@@ -1,4 +1,5 @@
 import glamorous from "glamorous";
+import HomeIconImage from "../../Images/outline-home-24px.svg";
 
 export const Container = glamorous.div({
   margin: "0 auto",
@@ -24,7 +25,95 @@ export const Logo = glamorous.div({
   color: "#666"
 });
 
+export const Home = glamorous.a({
+  flex: "50%",
+  textDecoration: "none",
+  textAlign: "right",
+  fontSize: "14px",
+  color: "#666"
+});
+
+export const HomeIcon = glamorous.div({
+  margin: "-1px 0 0 5px",
+  backgroundImage: `url(${HomeIconImage})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "18px 18px",
+  float: "right",
+  width: "18px",
+  height: "18px"
+});
+
+export const SectionTitle = glamorous.p({
+  padding: "0 30px",
+  textAlign: "left",
+  fontSize: "16px",
+  color: "#666"
+});
+
+export const NameInput = glamorous.input({
+  backgroundColor: "#fff",
+  display: "block",
+  width: "100%",
+  padding: "15px 30px",
+  textAlign: "left",
+  textDecoration: "none",
+  fontSize: "16px",
+  color: "#666",
+  border: "none"
+});
+
+export const EmailInput = glamorous.input({
+  backgroundColor: "#fff",
+  display: "block",
+  width: "100%",
+  padding: "15px 30px",
+  textAlign: "left",
+  textDecoration: "none",
+  fontSize: "16px",
+  color: "#666",
+  border: "none"
+});
+
+export const UnitToggleSwitch = glamorous.input({
+  backgroundColor: "#fff",
+  display: "block",
+  width: "100%",
+  padding: "15px 30px",
+  textAlign: "right",
+  textDecoration: "none",
+  fontSize: "16px",
+  color: "#666",
+  border: "none"
+});
+
+export const ChangePassword = glamorous.a({
+  margin: "0 0 15px 0",
+  backgroundColor: "#fff",
+  display: "block",
+  width: "100%",
+  padding: "15px 20px",
+  textAlign: "center",
+  textDecoration: "none",
+  fontSize: "16px",
+  color: "#666",
+  border: "none"
+});
+
+export const PrivacyPolicy = glamorous.a({
+  margin: "0 0 15px 0",
+  backgroundColor: "#fff",
+  display: "block",
+  width: "100%",
+  padding: "15px 20px",
+  textAlign: "center",
+  textDecoration: "none",
+  fontSize: "16px",
+  color: "#666",
+  border: "none"
+});
+
 export const LogOut = glamorous.a({
+  margin: "0 0 15px 0",
   backgroundColor: "#fff",
   display: "block",
   width: "100%",
