@@ -3,8 +3,9 @@ import Background from "../../Images/background.jpg";
 import MailOutline from "../../Images/outline-email-24px.svg";
 
 export const Container = glamorous.div({
+  margin: "0 auto",
   fontFamily: "'Roboto', sans-serif",
-  background: `linear-gradient(rgba(100, 100, 100, 0.65), rgba(100, 100, 100, 0.65)), url(${Background})`,
+  background: `linear-gradient(rgba(0, 0, 150, 0.2), rgba(0, 0, 50, 0.6)), url(${Background})`,
   backgroundPosition: "top center",
   maxWidth: "600px",
   width: "100%",
@@ -14,7 +15,7 @@ export const Container = glamorous.div({
 
 export const ForgottenPasswordContainer = glamorous.div({
   width: "100%",
-  padding: "0px 12% 15px 12%"
+  padding: "0px 12% 0 12%"
 });
 
 export const HelpContainer = glamorous.div({
@@ -64,11 +65,9 @@ export const ResetPassword = glamorous.a({
 
 export const Login = glamorous.a({
   display: "block",
-  width: "158px",
-  textDecoration: "none",
+  padding: "0px 20px",
+  width: "100%",
+  textDecoration: "underline",
   color: "#CCC",
-  borderBottom: "solid 1px #CCC",
-  paddingLeft: "5px",
-  paddingBottom: "1px",
-  textAlign: "left"
+  textAlign: "right"
 });

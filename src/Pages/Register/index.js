@@ -22,18 +22,15 @@ class Register extends Component {
         <RegisterContainer>
           <NameInput type="text" placeholder="Your name" />
           <EmailInput type="email" placeholder="E-mail address" />
-          <PasswordInput
-            type="password"
-            placeholder="&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;"
-          />
+          <PasswordInput type="password" placeholder="Password" />
           <ConfirmPasswordInput
             type="password"
-            placeholder="&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;"
+            placeholder="Confirm password"
           />
           <RegisterButton href="./authenticated">Register</RegisterButton>
         </RegisterContainer>
         <HelpContainer>
-          <Login href="./">Login</Login>
+          <Login href="./"> &laquo; Back to Login</Login>
         </HelpContainer>
       </Container>
     );

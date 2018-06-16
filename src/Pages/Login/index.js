@@ -23,7 +23,7 @@ class Login extends Component {
       <Container>
         <Logo src={LogoImage} alt />
         <LoginContainer>
-          <EmailInput type="email" placeholder="Enter address" />
+          <EmailInput type="email" placeholder="E-mail address" />
           <PasswordInput
             type="password"
             placeholder="&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;"
@@ -33,17 +33,17 @@ class Login extends Component {
         <Divider />
         <SocialLoginContainer>
           <FacebookButton href="./authenticated">
-            Sign in with Facebook
+            Login with Facebook
           </FacebookButton>
-          <GoogleButton href="./authenticated">
-            Sign in with Google
-          </GoogleButton>
+          <GoogleButton href="./authenticated">Login with Google</GoogleButton>
         </SocialLoginContainer>
         <HelpContainer>
           <ForgottenPassword href="./forgotten-password">
             Forgot password?
           </ForgottenPassword>
-          <CreateAnAccount href="./register">Register</CreateAnAccount>
+          <CreateAnAccount href="./register">
+            New here? Register
+          </CreateAnAccount>
         </HelpContainer>
       </Container>
     );

@@ -1,13 +1,43 @@
 import React, { Component } from "react";
 
-class Main extends Component {
+import {
+  Container,
+  HeaderContainer,
+  Logo,
+  MyAccount,
+  AchievementContainer,
+  PreviousDay,
+  CurrentDay,
+  Nextday,
+  ManageContainer,
+  AddSomething,
+  RemoveSomething,
+  Statistics,
+  Information
+} from "./styles";
+
+class Authenticated extends Component {
   render() {
     return (
-      <div>
-        <h1>Main Page</h1>
-      </div>
+      <Container>
+        <HeaderContainer>
+          <Logo />
+          <MyAccount />
+        </HeaderContainer>
+        <AchievementContainer>
+          <PreviousDay />
+          <CurrentDay />
+          <Nextday />
+        </AchievementContainer>
+        <ManageContainer>
+          <AddSomething />
+          <RemoveSomething />
+          <Statistics />
+          <Information />
+        </ManageContainer>
+      </Container>
     );
   }
 }
 
-export default Main;
+export default Authenticated;

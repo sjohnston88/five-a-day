@@ -17,11 +17,11 @@ class ForgottenPassword extends Component {
       <Container>
         <Logo src={LogoImage} alt />
         <ForgottenPasswordContainer>
-          <EmailInput type="email" placeholder="Enter address" />
+          <EmailInput type="email" placeholder="E-mail address" />
           <ResetPassword href="./authenticated">Reset Password</ResetPassword>
         </ForgottenPasswordContainer>
         <HelpContainer>
-          <Login href="./">Login to Account &raquo;</Login>
+          <Login href="./"> &laquo; Back to Login</Login>
         </HelpContainer>
       </Container>
     );

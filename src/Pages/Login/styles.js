@@ -2,10 +2,13 @@ import glamorous from "glamorous";
 import Background from "../../Images/background.jpg";
 import MailOutline from "../../Images/outline-email-24px.svg";
 import Lock from "../../Images/outline-lock-24px.svg";
+import FacebookIcon from "../../Images/facebook.svg";
+import GoogleIcon from "../../Images/googleplus.svg";
 
 export const Container = glamorous.div({
+  margin: "0 auto",
   fontFamily: "'Roboto', sans-serif",
-  background: `linear-gradient(rgba(100, 100, 100, 0.65), rgba(100, 100, 100, 0.65)), url(${Background})`,
+  background: `linear-gradient(rgba(0, 0, 150, 0.2), rgba(0, 0, 50, 0.6)), url(${Background})`,
   backgroundPosition: "top center",
   maxWidth: "600px",
   width: "100%",
@@ -92,32 +95,40 @@ export const Divider = glamorous.hr({
 });
 
 export const FacebookButton = glamorous.a({
+  backgroundImage: `url(${FacebookIcon})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "22px 22px",
+  backgroundPosition: "116px 16px",
   display: "block",
   outline: "none",
   margin: "25px 0 10px",
   boxSizing: "border-box",
   width: "100%",
   backgroundColor: "#3B5998",
-  padding: "15px",
+  padding: "15px 20px 15px 150px",
   fontSize: "16px",
   letterSpacing: "1.2",
-  textAlign: "center",
+  textAlign: "left",
   color: "#fff",
   border: "1px solid #333",
   borderRadius: "5px"
 });
 
 export const GoogleButton = glamorous.a({
+  backgroundImage: `url(${GoogleIcon})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "22px 22px",
+  backgroundPosition: "116px 16px",
   display: "block",
   outline: "none",
   margin: "0 0 15px 0",
   boxSizing: "border-box",
   width: "100%",
   backgroundColor: "#dd4b39",
-  padding: "15px",
+  padding: "15px 20px 15px 150px",
   fontSize: "16px",
   letterSpacing: "1.2",
-  textAlign: "center",
+  textAlign: "left",
   color: "#fff",
   border: "1px solid #333",
   borderRadius: "5px"
@@ -125,18 +136,18 @@ export const GoogleButton = glamorous.a({
 
 export const ForgottenPassword = glamorous.a({
   display: "block",
+  padding: "0 0 0 20px",
   width: "50%",
   textDecoration: "none",
   color: "#CCC",
-  textAlign: "center"
+  textAlign: "left"
 });
 
 export const CreateAnAccount = glamorous.a({
   display: "block",
-  width: "140px",
-  textDecoration: "none",
+  padding: "0 20px 0 0",
+  width: "50%",
+  textDecoration: "underline",
   color: "#CCC",
-  borderBottom: "solid 1px #CCC",
-  paddingBottom: "1px",
-  textAlign: "center"
+  textAlign: "right"
 });
