@@ -104,6 +104,84 @@ class Authenticated extends Component {
               <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
               <AddButton />
             </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Orange</ItemTitle>
+              <ItemAmount>You need to eat 1 orange to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Cucumber</ItemTitle>
+              <ItemAmount>
+                You need to eat 1 inch of cucumber to count
+              </ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Strawberries</ItemTitle>
+              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Strawberries</ItemTitle>
+              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Orange</ItemTitle>
+              <ItemAmount>You need to eat 1 orange to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Cucumber</ItemTitle>
+              <ItemAmount>
+                You need to eat 1 inch of cucumber to count
+              </ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Strawberries</ItemTitle>
+              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Strawberries</ItemTitle>
+              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Orange</ItemTitle>
+              <ItemAmount>You need to eat 1 orange to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Cucumber</ItemTitle>
+              <ItemAmount>
+                You need to eat 1 inch of cucumber to count
+              </ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Strawberries</ItemTitle>
+              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <AddButton />
+            </Item>
+            <Item>
+              <ItemImage />
+              <ItemTitle>Strawberries</ItemTitle>
+              <ItemAmount>You need to eat 7 strawberries to count</ItemAmount>
+              <AddButton />
+            </Item>
           </ItemList>
         </SearchContainer>
       </Container>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SemiCircleProgressBar from "react-progressbar-semicircle";
 
 import {
   Container,
@@ -31,10 +30,13 @@ class MyAccount extends Component {
         <NameInput placeholder="Name" />
         <EmailInput placeholder="E-mail address" />
         <SectionTitle>Units &amp; Measures</SectionTitle>
-        <UnitToggleSwitch placeholder="Inches / Cups" />
+        <UnitToggleSwitch>
+          <option>Inches / Oz</option>
+          <option>cm / g</option>
+        </UnitToggleSwitch>
         <SectionTitle>Account Preferences</SectionTitle>
         <ChangePassword> Change Password</ChangePassword>
-        <PrivacyPolicy> Privacy Policy </PrivacyPolicy>
+        <PrivacyPolicy href="./privacy-policy"> Privacy Policy </PrivacyPolicy>
         <LogOut href="./">Logout</LogOut>
       </Container>
     );

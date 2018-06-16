@@ -59,7 +59,8 @@ export const NameInput = glamorous.input({
   textDecoration: "none",
   fontSize: "16px",
   color: "#666",
-  border: "none"
+  border: "none",
+  borderBottom: "1px solid #ccc"
 });
 
 export const EmailInput = glamorous.input({
@@ -74,12 +75,13 @@ export const EmailInput = glamorous.input({
   border: "none"
 });
 
-export const UnitToggleSwitch = glamorous.input({
+export const UnitToggleSwitch = glamorous.select({
   backgroundColor: "#fff",
   display: "block",
   width: "100%",
-  padding: "15px 30px",
+  padding: "15px 20px",
   textAlign: "right",
+  textAlignLast: "right",
   textDecoration: "none",
   fontSize: "16px",
   color: "#666",

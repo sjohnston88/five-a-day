@@ -120,7 +120,7 @@ export const GoogleButton = glamorous.a({
   backgroundImage: `url(${GoogleIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "22px 22px",
-  backgroundPosition: "20% 14px",
+  backgroundPosition: "21% 14px",
   display: "block",
   outline: "none",
   margin: "0 0 15px 0",
@@ -139,7 +139,7 @@ export const GoogleButton = glamorous.a({
 
 export const ForgottenPassword = glamorous.a({
   display: "block",
-  padding: "0 0 0 20px",
+  padding: "0 0 0 10px",
   width: "50%",
   textDecoration: "none",
   color: "#CCC",
@@ -148,7 +148,7 @@ export const ForgottenPassword = glamorous.a({
 
 export const CreateAnAccount = glamorous.a({
   display: "block",
-  padding: "0 20px 0 0",
+  padding: "0 10px 0 0",
   width: "50%",
   textDecoration: "underline",
   color: "#CCC",
