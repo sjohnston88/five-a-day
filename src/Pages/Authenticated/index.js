@@ -16,8 +16,10 @@ import {
   DisplayedType,
   DisplayedTotal,
   BigText,
+  BiggerText,
   SearchContainer,
   SearchBar,
+  ClearSearchButton,
   ItemList,
   Item,
   ItemImage,
@@ -71,11 +73,19 @@ export class Authenticated extends React.Component {
 
   searchItems = event => {
     this.setState({
+      searchTerm: event.target.value,
       filteredData: this.state.applicationData.filter(data => {
         return (
           data.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1
         );
       })
+    });
+  };
+
+  clearSearchTerm = () => {
+    this.setState({
+      searchTerm: "",
+      filteredData: []
     });
   };
 
@@ -104,13 +114,24 @@ export class Authenticated extends React.Component {
             <Nextday />
           </AchievementContainer>
           <DisplayedTotal>
-            <BigText>{this.state.currentDay.length}</BigText> of{" "}
-            <BigText>5</BigText>
+            {this.state.currentDay.length > 5 ? (
+              <BiggerText>{this.state.currentDay.length}</BiggerText>
+            ) : (
+              <BigText>{this.state.currentDay.length}</BigText>
+            )}{" "}
+            of <BigText>5</BigText>
             <DisplayedType>Fruits and Vegetables</DisplayedType>
           </DisplayedTotal>
         </HeadsUpDisplay>
         <SearchContainer>
-          <SearchBar placeholder="Search" onChange={e => this.searchItems(e)} />
+          <SearchBar
+            placeholder="Search"
+            value={this.state.searchTerm}
+            onChange={e => this.searchItems(e)}
+          />
+          {this.state.searchTerm ? (
+            <ClearSearchButton onClick={this.clearSearchTerm} />
+          ) : null}
           <ItemList>
             {this.state.filteredData.length > 0
               ? this.state.filteredData.map(item => (
@@ -118,7 +139,7 @@ export class Authenticated extends React.Component {
                     <ItemImage />
                     <ItemTitle>{item.name}</ItemTitle>
                     <ItemAmount>
-                      Eat {item.amount} {item.name} to count
+                      Eat {item.amount} {item.name.toLowerCase()} to count
                     </ItemAmount>
                     {this.state.currentDay.indexOf(`${item.name}`) > -1 ? (
                       <RemoveButton
@@ -136,7 +157,7 @@ export class Authenticated extends React.Component {
                     <ItemImage />
                     <ItemTitle>{item.name}</ItemTitle>
                     <ItemAmount>
-                      Eat {item.amount} {item.name} to count
+                      Eat {item.amount} {item.name.toLowerCase()} to count
                     </ItemAmount>
                     {this.state.currentDay.indexOf(`${item.name}`) > -1 ? (
                       <RemoveButton
