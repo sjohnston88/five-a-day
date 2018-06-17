@@ -16,7 +16,7 @@ export const Container = glamorous.div({
   padding: "10px"
 });
 
-export const LoginContainer = glamorous.div({
+export const LoginContainer = glamorous.form({
   width: "100%",
   padding: "0px 8% 15px 8%"
 });
