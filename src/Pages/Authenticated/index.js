@@ -31,6 +31,7 @@ export class Authenticated extends React.Component {
   constructor() {
     super();
     this.state = {
+      currentDay: ["Strawberries"],
       applicationData: [
         { name: "Strawberries", amount: "7" },
         { name: "Carrot", amount: "1" },
@@ -45,7 +46,7 @@ export class Authenticated extends React.Component {
         { name: "Apple", amount: "1" },
         { name: "Chard", amount: "1 handful" }
       ],
-      currentDay: ["Strawberries"],
+      filteredData: [],
       searchTerm: ""
     };
   }
@@ -68,11 +69,12 @@ export class Authenticated extends React.Component {
     });
   };
 
-  search = event => {
-    console.log(event.target.value);
+  searchItems = event => {
     this.setState({
-      applicationData: this.state.applicationData.find(searchResults => {
-        return searchResults.name !== event.target.value;
+      filteredData: this.state.applicationData.filter(data => {
+        return (
+          data.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1
+        );
       })
     });
   };
@@ -108,24 +110,45 @@ export class Authenticated extends React.Component {
           </DisplayedTotal>
         </HeadsUpDisplay>
         <SearchContainer>
-          <SearchBar placeholder="Search" onChange={e => this.search(e)} />
+          <SearchBar placeholder="Search" onChange={e => this.searchItems(e)} />
           <ItemList>
-            {this.state.applicationData.map(item => (
-              <Item key={item.key}>
-                <ItemImage />
-                <ItemTitle>{item.name}</ItemTitle>
-                <ItemAmount>
-                  Eat {item.amount} {item.name} to count
-                </ItemAmount>
-                {this.state.currentDay.indexOf(`${item.name}`) > -1 ? (
-                  <RemoveButton
-                    onClick={() => this.handleRemoveItem(item.name)}
-                  />
-                ) : (
-                  <AddButton onClick={() => this.handleAddItem(item.name)} />
-                )}
-              </Item>
-            ))}
+            {this.state.filteredData.length > 0
+              ? this.state.filteredData.map(item => (
+                  <Item key={item.key}>
+                    <ItemImage />
+                    <ItemTitle>{item.name}</ItemTitle>
+                    <ItemAmount>
+                      Eat {item.amount} {item.name} to count
+                    </ItemAmount>
+                    {this.state.currentDay.indexOf(`${item.name}`) > -1 ? (
+                      <RemoveButton
+                        onClick={() => this.handleRemoveItem(item.name)}
+                      />
+                    ) : (
+                      <AddButton
+                        onClick={() => this.handleAddItem(item.name)}
+                      />
+                    )}
+                  </Item>
+                ))
+              : this.state.applicationData.map(item => (
+                  <Item key={item.key}>
+                    <ItemImage />
+                    <ItemTitle>{item.name}</ItemTitle>
+                    <ItemAmount>
+                      Eat {item.amount} {item.name} to count
+                    </ItemAmount>
+                    {this.state.currentDay.indexOf(`${item.name}`) > -1 ? (
+                      <RemoveButton
+                        onClick={() => this.handleRemoveItem(item.name)}
+                      />
+                    ) : (
+                      <AddButton
+                        onClick={() => this.handleAddItem(item.name)}
+                      />
+                    )}
+                  </Item>
+                ))}
           </ItemList>
         </SearchContainer>
       </Container>
