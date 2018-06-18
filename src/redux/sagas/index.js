@@ -1,9 +1,8 @@
 import { all } from "redux-saga/effects";
-import initialiseAppSaga from "./InitialiseApp";
-import Login from "./Login";
+import loginSaga from "./Login";
 
 function* rootSaga(userPool) {
-  yield all([initialiseAppSaga(), Login(userPool)]);
+  yield all([loginSaga(userPool)]);
 }
 
 export default rootSaga;

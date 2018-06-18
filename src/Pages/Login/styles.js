@@ -18,24 +18,24 @@ export const Container = glamorous.div({
 
 export const LoginContainer = glamorous.form({
   width: "100%",
-  padding: "0px 8% 15px 8%"
+  padding: "0 8%"
 });
 
 export const SocialLoginContainer = glamorous.div({
   width: "100%",
-  padding: "0px 8% 0px 8%"
+  padding: "0 8%"
 });
 
 export const HelpContainer = glamorous.div({
   width: "100%",
   display: "flex",
-  padding: "0px 8% 15px 8%"
+  padding: "0 8%"
 });
 
 export const Logo = glamorous.img({
   width: "120px",
   display: "block",
-  margin: "20px auto 40px auto"
+  margin: "20px auto"
 });
 
 export const EmailInput = glamorous.input({
@@ -76,7 +76,7 @@ export const PasswordInput = glamorous.input({
   borderBottomRightRadius: "5px"
 });
 
-export const LoginButton = glamorous.a({
+export const LoginButton = glamorous.button({
   display: "block",
   outline: "none",
   margin: "15px 0",
@@ -106,7 +106,7 @@ export const FacebookButton = glamorous.a({
   backgroundPosition: "10% 13px",
   display: "block",
   outline: "none",
-  margin: "25px 0 10px",
+  margin: "10px 0 10px",
   boxSizing: "border-box",
   width: "100%",
   backgroundColor: "#3B5998",

@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { shape, bool, func, string, object } from "prop-types";
+import { shape, func, string, object } from "prop-types";
+import {
+  isValidPasswordLength,
+  isValidEmailFormat
+} from "../../utils/validations";
+import ErrorPanel from "../../Components/ErrorPanel";
 import { connect } from "react-redux";
 import Types from "../../redux/types";
 import LogoImage from "../../Images/logo.svg";
@@ -23,12 +28,10 @@ import {
 export class Login extends Component {
   static propTypes = {
     location: object,
-    signIn: shape({
-      cognitoErrorMessage: string,
-      loading: bool.isRequired
+    login: shape({
+      cognitoErrorMessage: string
     }).isRequired,
-    handleSignInSubmit: func.isRequired,
-    handleModalClose: func.isRequired
+    handleLoginSubmit: func.isRequired
   };
 
   static defaultProps = {
@@ -47,22 +50,103 @@ export class Login extends Component {
     };
   }
 
+  handleEmailInputChange = e => {
+    const { value } = e.target;
+    this.setState(() => ({
+      email: value,
+      emptyEmail: false,
+      invalidEmail: false
+    }));
+  };
+
+  handlePasswordInputChange = e => {
+    const { value } = e.target;
+    this.setState({
+      password: value,
+      emptyPassword: false,
+      passwordTooShort: false
+    });
+  };
+
+  handleEmailBlur = () => {
+    const { email } = this.state;
+    if (email.length === 0) {
+      this.setState({ emptyEmail: true });
+    } else if (!isValidEmailFormat(email)) {
+      this.setState({ invalidEmail: true });
+    }
+  };
+
+  handlePasswordBlur = () => {
+    const { password } = this.state;
+    if (password.length === 0) {
+      this.setState({ emptyPassword: true });
+    } else if (password.length < 8) {
+      this.setState({ passwordTooShort: true });
+    }
+  };
+
+  displayErrorPanel = () => {
+    const {
+      invalidEmail,
+      emptyEmail,
+      passwordTooShort,
+      emptyPassword
+    } = this.state;
+    const { login } = this.props;
+    if (login.cognitoErrorMessage)
+      return <ErrorPanel message={login.cognitoErrorMessage} />;
+    if (invalidEmail)
+      return <ErrorPanel message="Sorry your email is invalid" />;
+    if (emptyEmail) return <ErrorPanel message="Please enter an email" />;
+    if (passwordTooShort) return <ErrorPanel message="Password is too short" />;
+    if (emptyPassword)
+      return <ErrorPanel message="Please enter your password" />;
+    return "";
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    this.setState(() => ({ password: "" }));
+    if (email.length === 0) {
+      this.setState({ emptyEmail: true });
+    } else if (!isValidEmailFormat(email)) {
+      this.setState({ invalidEmail: true });
+    } else if (password.length === 0) {
+      this.setState({ emptyPassword: true });
+    } else if (!isValidPasswordLength(password)) {
+      this.setState({ passwordTooShort: true });
+    } else {
+      //this.props.handleLoginSubmit(email, password);
+    }
+  };
+
   render() {
     return (
       <Container>
         <Logo src={LogoImage} alt="" />
-        <LoginContainer>
+        <LoginContainer onSubmit={this.handleSubmit}>
           <EmailInput
             type="email"
             placeholder="E-mail address"
             autoComplete="username"
+            onBlur={this.handleEmailBlur}
+            onChange={this.handleEmailInputChange}
+            value={this.state.email}
           />
           <PasswordInput
             type="password"
             placeholder="&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;"
             autoComplete="current-password"
+            onBlur={this.handlePasswordBlur}
+            onChange={this.handlePasswordInputChange}
+            value={this.state.password}
           />
-          <LoginButton href="./authenticated">Login</LoginButton>
+
+          {this.displayErrorPanel()}
+
+          <LoginButton type="submit">Login</LoginButton>
         </LoginContainer>
         <Divider />
         <SocialLoginContainer>
@@ -90,9 +174,9 @@ const mapStateToProps = ({ login, router }) => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  handleSignInSubmit: (email, password) => {
+  handleLoginSubmit: (email, password) => {
     dispatch({
-      type: Types.SIGN_IN_SUBMIT,
+      type: Types.LOGIN_SUBMIT,
       email,
       password
     });

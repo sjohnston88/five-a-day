@@ -1,8 +1,7 @@
 import React from "react";
 import { string, object } from "prop-types";
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { ConnectedRouter } from "react-router-redux";
 import Login from "./Pages/Login";
 import Authenticated from "./Pages/Authenticated";
 import Register from "./Pages/Register";
@@ -10,23 +9,38 @@ import ForgottenPassword from "./Pages/ForgottenPassword";
 import MyAccount from "./Pages/MyAccount";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import ChangePassword from "./Pages/ChangePassword";
-import { history } from "./redux/store";
 import "./App.css";
 
-const App = ({ location, serverSideError }) => (
-  <div className="App">
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route path="/authenticated" component={Authenticated} />
-        <Route path="/register" component={Register} />
-        <Route path="/forgotten-password" component={ForgottenPassword} />
-        <Route path="/my-account" component={MyAccount} />
-        <Route path="/privacy-policy" component={PrivacyPolicy} />
-        <Route path="/change-password" component={ChangePassword} />
-      </Switch>
-    </ConnectedRouter>
-  </div>
+export const App = ({ location, serverSideError }) => (
+  <Router>
+    <div className="App">
+      <Route exact path="/" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/forgotten-password" component={ForgottenPassword} />
+      <PrivateRoute path="/authenticated" component={Authenticated} />
+      <PrivateRoute path="/my-account" component={MyAccount} />
+      <PrivateRoute path="/change-password" component={ChangePassword} />
+    </div>
+  </Router>
+);
+
+const fakeAuth = {
+  isAuthenticated: false
+};
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      fakeAuth.isAuthenticated ? (
+        <Component {...props} />
+      ) : (
+        //<Redirect to={{ pathname: "/",state: { from: props.location } }} />
+        <Component {...props} />
+      )
+    }
+  />
 );
 
 App.propTypes = {
@@ -41,7 +55,7 @@ App.defaultProps = {
 
 const mapStateToProps = state => ({
   location: state.router.location || {},
-  serverSideError: state.signIn.cognitoErrorMessage
+  serverSideError: state.login.cognitoErrorMessage
 });
 
 const mapDispatchToProps = dispatch => ({});

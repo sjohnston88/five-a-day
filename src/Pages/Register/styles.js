@@ -15,7 +15,7 @@ export const Container = glamorous.div({
   padding: "10px"
 });
 
-export const RegisterContainer = glamorous.div({
+export const RegisterContainer = glamorous.form({
   width: "100%",
   padding: "0px 8% 0 8%"
 });
@@ -29,7 +29,7 @@ export const HelpContainer = glamorous.div({
 export const Logo = glamorous.img({
   width: "120px",
   display: "block",
-  margin: "20px auto 40px auto"
+  margin: "20px auto"
 });
 
 export const NameInput = glamorous.input({
@@ -108,7 +108,7 @@ export const ConfirmPasswordInput = glamorous.input({
   borderBottomRightRadius: "5px"
 });
 
-export const RegisterButton = glamorous.a({
+export const RegisterButton = glamorous.button({
   display: "block",
   outline: "none",
   margin: "15px 0",

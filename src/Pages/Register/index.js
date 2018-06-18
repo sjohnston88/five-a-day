@@ -1,4 +1,12 @@
 import React, { Component } from "react";
+import { shape, func, string, object } from "prop-types";
+import {
+  isValidPasswordLength,
+  isValidEmailFormat
+} from "../../utils/validations";
+import ErrorPanel from "../../Components/ErrorPanel";
+import { connect } from "react-redux";
+import Types from "../../redux/types";
 import LogoImage from "../../Images/logo.svg";
 
 import {
@@ -15,19 +23,180 @@ import {
 } from "./styles";
 
 class Register extends Component {
+  static propTypes = {
+    location: object,
+    register: shape({
+      cognitoErrorMessage: string
+    }).isRequired,
+    handleRegisterSubmit: func.isRequired
+  };
+
+  static defaultProps = {
+    location: {}
+  };
+
+  constructor() {
+    super();
+    this.state = {
+      emptyName: false,
+      emptyEmail: false,
+      invalidEmail: false,
+      emptyPassword: false,
+      passwordTooShort: false,
+      confirmPasswordMismatch: false,
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: ""
+    };
+  }
+
+  handleNameInputChange = e => {
+    const { value } = e.target;
+    this.setState(() => ({
+      name: value,
+      emptyName: false
+    }));
+  };
+
+  handleEmailInputChange = e => {
+    const { value } = e.target;
+    this.setState(() => ({
+      email: value,
+      emptyEmail: false,
+      invalidEmail: false
+    }));
+  };
+
+  handlePasswordInputChange = e => {
+    const { value } = e.target;
+    this.setState({
+      password: value,
+      emptyPassword: false,
+      passwordTooShort: false
+    });
+  };
+
+  handleConfirmPasswordInputChange = e => {
+    const { value } = e.target;
+    this.setState({
+      confirmPassword: value,
+      confirmPasswordMismatch: false
+    });
+  };
+
+  handleNameBlur = () => {
+    const { name } = this.state;
+    if (name.length === 0) {
+      this.setState({ emptyName: true });
+    }
+  };
+
+  handleEmailBlur = () => {
+    const { email } = this.state;
+    if (email.length === 0) {
+      this.setState({ emptyEmail: true });
+    } else if (!isValidEmailFormat(email)) {
+      this.setState({ invalidEmail: true });
+    }
+  };
+
+  handlePasswordBlur = () => {
+    const { password } = this.state;
+    if (password.length === 0) {
+      this.setState({ emptyPassword: true });
+    } else if (password.length < 8) {
+      this.setState({ passwordTooShort: true });
+    }
+  };
+
+  handleConfirmPasswordBlur = () => {
+    const { password, confirmPassword } = this.state;
+    if (confirmPassword !== password) {
+      this.setState({ confirmPasswordMismatch: true });
+    }
+  };
+
+  displayErrorPanel = () => {
+    const {
+      emptyName,
+      invalidEmail,
+      emptyEmail,
+      passwordTooShort,
+      emptyPassword,
+      confirmPasswordMismatch
+    } = this.state;
+    if (emptyName) return <ErrorPanel message="Please enter a name" />;
+    if (invalidEmail)
+      return <ErrorPanel message="Sorry your email is invalid" />;
+    if (emptyEmail) return <ErrorPanel message="Please enter an email" />;
+    if (passwordTooShort) return <ErrorPanel message="Password is too short" />;
+    if (emptyPassword)
+      return <ErrorPanel message="Please enter your password" />;
+    if (confirmPasswordMismatch)
+      return <ErrorPanel message="Passwords do not match" />;
+    return "";
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { name, email, password } = this.state;
+    this.setState(() => ({ password: "" }));
+    if (name.length === 0) {
+      this.setState({ emptyName: true });
+    } else if (email.length === 0) {
+      this.setState({ emptyEmail: true });
+    } else if (!isValidEmailFormat(email)) {
+      this.setState({ invalidEmail: true });
+    } else if (password.length === 0) {
+      this.setState({ emptyPassword: true });
+    } else if (!isValidPasswordLength(password)) {
+      this.setState({ passwordTooShort: true });
+    } else {
+      //this.props.handleSignInSubmit(email, password);
+    }
+  };
   render() {
     return (
       <Container>
         <Logo src={LogoImage} alt />
-        <RegisterContainer>
-          <NameInput type="text" placeholder="Your name" />
-          <EmailInput type="email" placeholder="E-mail address" />
-          <PasswordInput type="password" placeholder="Password" />
+        <RegisterContainer onSubmit={this.handleSubmit}>
+          <NameInput
+            type="text"
+            placeholder="Your name"
+            autoComplete="name"
+            onBlur={this.handleNameBlur}
+            onChange={this.handleNameInputChange}
+            value={this.state.name}
+          />
+          <EmailInput
+            type="email"
+            placeholder="E-mail address"
+            autoComplete="email"
+            onBlur={this.handleEmailBlur}
+            onChange={this.handleEmailInputChange}
+            value={this.state.email}
+          />
+          <PasswordInput
+            type="password"
+            placeholder="Password"
+            autoComplete="new-password"
+            onBlur={this.handlePasswordBlur}
+            onChange={this.handlePasswordInputChange}
+            value={this.state.password}
+          />
           <ConfirmPasswordInput
             type="password"
             placeholder="Confirm password"
+            autoComplete="new-password"
+            onBlur={this.handleConfirmPasswordBlur}
+            onChange={this.handleConfirmPasswordInputChange}
+            value={this.state.confirmPassword}
           />
-          <RegisterButton href="./authenticated">Register</RegisterButton>
+
+          {this.displayErrorPanel()}
+
+          <RegisterButton type="submit">Register</RegisterButton>
         </RegisterContainer>
         <HelpContainer>
           <Login href="./"> &laquo; Back to Login</Login>
@@ -36,5 +205,23 @@ class Register extends Component {
     );
   }
 }
+const mapStateToProps = ({ register, router }) => ({
+  register,
+  location: router.location
+});
 
-export default Register;
+export const mapDispatchToProps = dispatch => ({
+  handleRegisterSubmit: (name, email, password) => {
+    dispatch({
+      type: Types.REGISTER_SUBMIT,
+      name,
+      email,
+      password
+    });
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Register);

@@ -33,13 +33,15 @@ export class Authenticated extends React.Component {
   constructor() {
     super();
     this.state = {
+      date: "Today",
       currentDay: ["Strawberries"],
+      previousDay: ["Strawberries", "Raspberries", "Cherries"],
       applicationData: [
         { name: "Strawberries", amount: "7" },
         { name: "Carrot", amount: "1" },
         { name: "Cucumber", amount: "1 inch" },
         { name: "Pumpkin", amount: "1 handful" },
-        { name: "Raspberies", amount: "7" },
+        { name: "Raspberries", amount: "7" },
         { name: "Grapes", amount: "10" },
         { name: "Cherries", amount: "8" },
         { name: "Tomatoes", amount: "1" },
@@ -100,7 +102,7 @@ export class Authenticated extends React.Component {
           </MyAccount>
         </HeaderContainer>
         <HeadsUpDisplay>
-          <DisplayedDate> Today </DisplayedDate>
+          <DisplayedDate> {this.state.date} </DisplayedDate>
           <AchievementContainer>
             <PreviousDay />
             <CurrentDay>

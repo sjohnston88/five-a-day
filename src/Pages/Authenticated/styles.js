@@ -125,7 +125,8 @@ export const BigText = glamorous.span({
 
 export const BiggerText = glamorous.span({
   color: "darkorange",
-  fontSize: "42px"
+  fontSize: "42px",
+  lineHeight: "30px"
 });
 
 export const SearchContainer = glamorous.div({
@@ -152,7 +153,7 @@ export const SearchBar = glamorous.input({
 
 export const ItemList = glamorous.div({
   margin: "0",
-  paddingBottom: "100%",
+  paddingBottom: "107%",
   position: "relative",
   width: "100%",
   height: "100%",
@@ -181,27 +182,35 @@ export const ItemAmount = glamorous.p({
 export const ItemImage = glamorous.div({});
 
 export const AddButton = glamorous.button({
-  margin: "-36px 0",
-  float: "right",
-  width: "30px",
-  height: "30px",
+  position: "absolute",
+  zIndex: 10,
+  top: 0,
+  left: 0,
+  cursor: "pointer",
+  width: "100%",
+  height: "100%",
   backgroundImage: `url(${AddButtonIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "30px 30px",
-  backgroundColor: "#fff",
+  backgroundPosition: "94% 20px",
+  backgroundColor: "transparent",
   border: "none",
   outline: "none"
 });
 
 export const RemoveButton = glamorous.button({
-  margin: "-36px 0",
-  float: "right",
-  width: "30px",
-  height: "30px",
+  position: "absolute",
+  zIndex: 10,
+  top: 0,
+  left: 0,
+  cursor: "pointer",
+  width: "100%",
+  height: "100%",
   backgroundImage: `url(${RemoveButtonIcon})`,
   backgroundRepeat: "no-repeat",
   backgroundSize: "30px 30px",
-  backgroundColor: "#fff",
+  backgroundPosition: "94% 20px",
+  backgroundColor: "transparent",
   border: "none",
   outline: "none"
 });
