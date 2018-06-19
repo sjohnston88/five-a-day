@@ -15,7 +15,17 @@ import aws_exports from "./aws-exports";
 import "./App.css";
 
 Amplify.configure(aws_exports);
-let isAuthenticated = Auth.currentSession().then(console.log(isAuthenticated));
+let isAuthenticated = Auth.currentSession()
+  .then(data => {
+    console.log(data.accessToken);
+    if (data.accessToken) return true;
+    return false;
+  })
+  .catch(err => {
+    return false;
+  });
+
+console.log(isAuthenticated);
 
 export const App = ({ location }) => (
   <Router>
@@ -36,11 +46,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      isAuthenticated.CognitoUserSession ? (
+      isAuthenticated ? (
         <Component {...props} />
       ) : (
-        //<Redirect to={{ pathname: "/", state: { from: props.location } }} />
-        <Component {...props} />
+        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        //<Component {...props} />
       )
     }
   />

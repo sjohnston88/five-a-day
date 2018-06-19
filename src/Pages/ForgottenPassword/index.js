@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { func, object } from "prop-types";
-import Amplify, { Auth } from "aws-amplify";
+import { Auth } from "aws-amplify";
 import { isValidEmailFormat } from "../../utils/validations";
 import ErrorPanel from "../../Components/ErrorPanel";
 import { connect } from "react-redux";
 import Types from "../../redux/types";
 import LogoImage from "../../Images/logo.svg";
-import aws_exports from "../../aws-exports";
 
 import {
   Container,
@@ -18,8 +17,6 @@ import {
   ResetPassword,
   Login
 } from "./styles";
-
-Amplify.configure(aws_exports);
 
 class ForgottenPassword extends Component {
   static propTypes = {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { func, object } from "prop-types";
-import Amplify, { Auth } from "aws-amplify";
+import { Auth } from "aws-amplify";
 import {
   isValidPasswordLength,
   isValidEmailFormat
@@ -9,7 +9,6 @@ import ErrorPanel from "../../Components/ErrorPanel";
 import { connect } from "react-redux";
 import Types from "../../redux/types";
 import LogoImage from "../../Images/logo.svg";
-import aws_exports from "../../aws-exports";
 
 import {
   Container,
@@ -26,8 +25,6 @@ import {
   ForgottenPassword,
   CreateAnAccount
 } from "./styles";
-
-Amplify.configure(aws_exports);
 
 export class Login extends Component {
   static propTypes = {
@@ -98,7 +95,6 @@ export class Login extends Component {
       emptyPassword,
       cognitoError
     } = this.state;
-    const { login } = this.props;
     if (invalidEmail)
       return <ErrorPanel message="Sorry your email is invalid" />;
     if (emptyEmail) return <ErrorPanel message="Please enter an email" />;
