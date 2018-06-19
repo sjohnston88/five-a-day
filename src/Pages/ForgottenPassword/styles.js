@@ -1,6 +1,7 @@
 import glamorous from "glamorous";
 import Background from "../../Images/background.jpg";
 import MailOutline from "../../Images/outline-email-24px.svg";
+import InfoIcon from "../../Images/outline-info-24px.svg";
 
 export const Container = glamorous.div({
   margin: "0 auto",
@@ -28,6 +29,23 @@ export const Logo = glamorous.img({
   width: "120px",
   display: "block",
   margin: "20px auto"
+});
+
+export const SuccessPanel = glamorous.div({
+  margin: "20px 8%",
+  backgroundImage: `url(${InfoIcon})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "36px 36px",
+  backgroundPosition: "10px 10px",
+  backgroundColor: "#d9edf7",
+  color: "#31708f",
+  padding: "10px 5% 10px 56px",
+  display: "block",
+  fontSize: "14px",
+  lineHeight: "19px",
+  border: "1px solid #bce8f1",
+  borderBottom: "none",
+  borderRadius: "5px"
 });
 
 export const EmailInput = glamorous.input({

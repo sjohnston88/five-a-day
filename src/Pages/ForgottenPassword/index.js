@@ -1,27 +1,29 @@
 import React, { Component } from "react";
-import { shape, func, string, object } from "prop-types";
+import { func, object } from "prop-types";
+import Amplify, { Auth } from "aws-amplify";
 import { isValidEmailFormat } from "../../utils/validations";
 import ErrorPanel from "../../Components/ErrorPanel";
 import { connect } from "react-redux";
 import Types from "../../redux/types";
 import LogoImage from "../../Images/logo.svg";
+import aws_exports from "../../aws-exports";
 
 import {
   Container,
   ForgottenPasswordContainer,
   HelpContainer,
   Logo,
+  SuccessPanel,
   EmailInput,
   ResetPassword,
   Login
 } from "./styles";
 
+Amplify.configure(aws_exports);
+
 class ForgottenPassword extends Component {
   static propTypes = {
     location: object,
-    forgottenPassword: shape({
-      cognitoErrorMessage: string
-    }).isRequired,
     handleForgottenPassword: func.isRequired
   };
 
@@ -30,7 +32,9 @@ class ForgottenPassword extends Component {
     this.state = {
       emptyEmail: false,
       invalidEmail: false,
-      email: ""
+      email: "",
+      cognitoError: "",
+      emailSent: false
     };
   }
 
@@ -53,15 +57,16 @@ class ForgottenPassword extends Component {
   };
 
   displayErrorPanel = () => {
-    const { invalidEmail, emptyEmail } = this.state;
+    const { invalidEmail, emptyEmail, cognitoError } = this.state;
     if (invalidEmail)
       return <ErrorPanel message="Sorry your email is invalid" />;
     if (emptyEmail) return <ErrorPanel message="Please enter an email" />;
+    if (cognitoError) return <ErrorPanel message={cognitoError} />;
     return "";
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = async event => {
+    event.preventDefault();
     const { email } = this.state;
     this.setState(() => ({ password: "" }));
     if (email.length === 0) {
@@ -69,14 +74,25 @@ class ForgottenPassword extends Component {
     } else if (!isValidEmailFormat(email)) {
       this.setState({ invalidEmail: true });
     } else {
-      //this.props.handleForgottenPassword(email);
+      try {
+        await Auth.forgotPassword(email);
+        this.setState({ emailSent: true });
+      } catch (error) {
+        this.setState({ cognitoError: error });
+      }
     }
   };
-
   render() {
     return (
       <Container>
         <Logo src={LogoImage} alt="" />
+
+        {this.state.emailSent ? (
+          <SuccessPanel>
+            Your request has been submitted and you should receive an email from
+            us shortly.
+          </SuccessPanel>
+        ) : null}
         <ForgottenPasswordContainer onSubmit={this.handleSubmit}>
           <EmailInput
             type="email"
@@ -99,8 +115,7 @@ class ForgottenPassword extends Component {
   }
 }
 
-const mapStateToProps = ({ forgottenPassword, router }) => ({
-  forgottenPassword,
+const mapStateToProps = ({ router }) => ({
   location: router.location
 });
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { shape, func, string, object } from "prop-types";
+import { func, object } from "prop-types";
+import Amplify, { Auth } from "aws-amplify";
 import {
   isValidPasswordLength,
   isValidEmailFormat
@@ -8,6 +9,7 @@ import ErrorPanel from "../../Components/ErrorPanel";
 import { connect } from "react-redux";
 import Types from "../../redux/types";
 import LogoImage from "../../Images/logo.svg";
+import aws_exports from "../../aws-exports";
 
 import {
   Container,
@@ -22,12 +24,11 @@ import {
   Login
 } from "./styles";
 
+Amplify.configure(aws_exports);
+
 class Register extends Component {
   static propTypes = {
     location: object,
-    register: shape({
-      cognitoErrorMessage: string
-    }).isRequired,
     handleRegisterSubmit: func.isRequired
   };
 
@@ -47,7 +48,8 @@ class Register extends Component {
       name: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      cognitoError: ""
     };
   }
 
@@ -124,7 +126,8 @@ class Register extends Component {
       emptyEmail,
       passwordTooShort,
       emptyPassword,
-      confirmPasswordMismatch
+      confirmPasswordMismatch,
+      cognitoError
     } = this.state;
     if (emptyName) return <ErrorPanel message="Please enter a name" />;
     if (invalidEmail)
@@ -135,11 +138,12 @@ class Register extends Component {
       return <ErrorPanel message="Please enter your password" />;
     if (confirmPasswordMismatch)
       return <ErrorPanel message="Passwords do not match" />;
+    if (cognitoError) return <ErrorPanel message={cognitoError} />;
     return "";
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = async event => {
+    event.preventDefault();
     const { name, email, password } = this.state;
     this.setState(() => ({ password: "" }));
     if (name.length === 0) {
@@ -153,13 +157,24 @@ class Register extends Component {
     } else if (!isValidPasswordLength(password)) {
       this.setState({ passwordTooShort: true });
     } else {
-      //this.props.handleSignInSubmit(email, password);
+      try {
+        await Auth.signUp({
+          username: email,
+          password,
+          attributes: {
+            name
+          }
+        });
+        window.location.href = "./authenticated";
+      } catch (error) {
+        this.setState({ cognitoError: error.message });
+      }
     }
   };
   render() {
     return (
       <Container>
-        <Logo src={LogoImage} alt />
+        <Logo src={LogoImage} alt="" />
         <RegisterContainer onSubmit={this.handleSubmit}>
           <NameInput
             type="text"
@@ -205,8 +220,7 @@ class Register extends Component {
     );
   }
 }
-const mapStateToProps = ({ register, router }) => ({
-  register,
+const mapStateToProps = ({ router }) => ({
   location: router.location
 });
 

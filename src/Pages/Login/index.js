@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { shape, func, string, object } from "prop-types";
+import { func, object } from "prop-types";
+import Amplify, { Auth } from "aws-amplify";
 import {
   isValidPasswordLength,
   isValidEmailFormat
@@ -8,6 +9,7 @@ import ErrorPanel from "../../Components/ErrorPanel";
 import { connect } from "react-redux";
 import Types from "../../redux/types";
 import LogoImage from "../../Images/logo.svg";
+import aws_exports from "../../aws-exports";
 
 import {
   Container,
@@ -25,12 +27,11 @@ import {
   CreateAnAccount
 } from "./styles";
 
+Amplify.configure(aws_exports);
+
 export class Login extends Component {
   static propTypes = {
     location: object,
-    login: shape({
-      cognitoErrorMessage: string
-    }).isRequired,
     handleLoginSubmit: func.isRequired
   };
 
@@ -45,6 +46,7 @@ export class Login extends Component {
       invalidEmail: false,
       emptyPassword: false,
       passwordTooShort: false,
+      cognitoError: "",
       email: "",
       password: ""
     };
@@ -55,7 +57,8 @@ export class Login extends Component {
     this.setState(() => ({
       email: value,
       emptyEmail: false,
-      invalidEmail: false
+      invalidEmail: false,
+      cognitoError: ""
     }));
   };
 
@@ -64,7 +67,8 @@ export class Login extends Component {
     this.setState({
       password: value,
       emptyPassword: false,
-      passwordTooShort: false
+      passwordTooShort: false,
+      cognitoError: ""
     });
   };
 
@@ -86,12 +90,13 @@ export class Login extends Component {
     }
   };
 
-  displayErrorPanel = () => {
+  displayErrorPanel = error => {
     const {
       invalidEmail,
       emptyEmail,
       passwordTooShort,
-      emptyPassword
+      emptyPassword,
+      cognitoError
     } = this.state;
     const { login } = this.props;
     if (login.cognitoErrorMessage)
@@ -102,11 +107,12 @@ export class Login extends Component {
     if (passwordTooShort) return <ErrorPanel message="Password is too short" />;
     if (emptyPassword)
       return <ErrorPanel message="Please enter your password" />;
+    if (cognitoError) return <ErrorPanel message={cognitoError} />;
     return "";
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = async event => {
+    event.preventDefault();
     const { email, password } = this.state;
     this.setState(() => ({ password: "" }));
     if (email.length === 0) {
@@ -118,7 +124,12 @@ export class Login extends Component {
     } else if (!isValidPasswordLength(password)) {
       this.setState({ passwordTooShort: true });
     } else {
-      //this.props.handleLoginSubmit(email, password);
+      try {
+        await Auth.signIn(email, password);
+        window.location.href = "./authenticated";
+      } catch (error) {
+        this.setState({ cognitoError: error.message });
+      }
     }
   };
 

@@ -133,7 +133,7 @@ export const PrivacyPolicy = glamorous.a({
   border: "none"
 });
 
-export const LogOut = glamorous.a({
+export const LogOut = glamorous.button({
   margin: "0 0 15px 0",
   backgroundColor: "#fff",
   display: "block",

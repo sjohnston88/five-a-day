@@ -1,5 +1,6 @@
 import React from "react";
-import { string, object } from "prop-types";
+import { object } from "prop-types";
+import Amplify, { Auth } from "aws-amplify";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Login from "./Pages/Login";
@@ -9,9 +10,14 @@ import ForgottenPassword from "./Pages/ForgottenPassword";
 import MyAccount from "./Pages/MyAccount";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import ChangePassword from "./Pages/ChangePassword";
+import NotFound from "./Pages/404";
+import aws_exports from "./aws-exports";
 import "./App.css";
 
-export const App = ({ location, serverSideError }) => (
+Amplify.configure(aws_exports);
+let isAuthenticated = Auth.currentSession().then(console.log(isAuthenticated));
+
+export const App = ({ location }) => (
   <Router>
     <div className="App">
       <Route exact path="/" component={Login} />
@@ -21,22 +27,19 @@ export const App = ({ location, serverSideError }) => (
       <PrivateRoute path="/authenticated" component={Authenticated} />
       <PrivateRoute path="/my-account" component={MyAccount} />
       <PrivateRoute path="/change-password" component={ChangePassword} />
+      <Route component={NotFound} />
     </div>
   </Router>
 );
-
-const fakeAuth = {
-  isAuthenticated: false
-};
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      fakeAuth.isAuthenticated ? (
+      isAuthenticated.CognitoUserSession ? (
         <Component {...props} />
       ) : (
-        //<Redirect to={{ pathname: "/",state: { from: props.location } }} />
+        //<Redirect to={{ pathname: "/", state: { from: props.location } }} />
         <Component {...props} />
       )
     }
@@ -44,18 +47,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 App.propTypes = {
-  location: object,
-  serverSideError: string
+  location: object
 };
 
 App.defaultProps = {
-  location: {},
-  serverSideError: ""
+  location: {}
 };
 
 const mapStateToProps = state => ({
-  location: state.router.location || {},
-  serverSideError: state.login.cognitoErrorMessage
+  location: state.router.location || {}
 });
 
 const mapDispatchToProps = dispatch => ({});

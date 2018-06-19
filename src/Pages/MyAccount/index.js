@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Auth } from "aws-amplify";
 
 import {
   Container,
@@ -17,6 +18,16 @@ import {
 } from "./styles";
 
 class MyAccount extends Component {
+  handleLogout = async event => {
+    event.preventDefault();
+    try {
+      await Auth.signOut();
+      window.location.href = "./";
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   render() {
     return (
       <Container>
@@ -41,7 +52,7 @@ class MyAccount extends Component {
           Change Password
         </ChangePassword>
         <PrivacyPolicy href="./privacy-policy"> Privacy Policy </PrivacyPolicy>
-        <LogOut href="./">Logout</LogOut>
+        <LogOut onClick={this.handleLogout}>Logout</LogOut>
       </Container>
     );
   }
