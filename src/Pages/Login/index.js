@@ -99,8 +99,6 @@ export class Login extends Component {
       cognitoError
     } = this.state;
     const { login } = this.props;
-    if (login.cognitoErrorMessage)
-      return <ErrorPanel message={login.cognitoErrorMessage} />;
     if (invalidEmail)
       return <ErrorPanel message="Sorry your email is invalid" />;
     if (emptyEmail) return <ErrorPanel message="Please enter an email" />;
@@ -179,8 +177,7 @@ export class Login extends Component {
   }
 }
 
-const mapStateToProps = ({ login, router }) => ({
-  login,
+const mapStateToProps = ({ router }) => ({
   location: router.location
 });
 
