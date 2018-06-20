@@ -120,7 +120,7 @@ export class Login extends Component {
     } else {
       try {
         await Auth.signIn(email, password);
-        window.location.href = "./authenticated";
+        this.props.history.push("./authenticated");
       } catch (error) {
         this.setState({ cognitoError: error.message });
       }

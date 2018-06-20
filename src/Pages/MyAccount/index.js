@@ -22,7 +22,7 @@ class MyAccount extends Component {
     event.preventDefault();
     try {
       await Auth.signOut();
-      window.location.href = "./";
+      this.props.history.push("./");
     } catch (error) {
       console.log(error);
     }

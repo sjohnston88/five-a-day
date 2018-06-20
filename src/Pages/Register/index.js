@@ -162,7 +162,7 @@ class Register extends Component {
             name
           }
         });
-        window.location.href = "./authenticated";
+        this.props.history.push("./authenticated");
       } catch (error) {
         this.setState({ cognitoError: error.message });
       }
