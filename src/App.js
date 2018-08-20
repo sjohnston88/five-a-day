@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { object } from "prop-types";
 import Amplify, { Auth } from "aws-amplify";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Login from "./Pages/Login";
 import Authenticated from "./Pages/Authenticated";
@@ -15,46 +15,37 @@ import aws_exports from "./aws-exports";
 import "./App.css";
 
 Amplify.configure(aws_exports);
-let isAuthenticated = Auth.currentSession()
-  .then(data => {
-    console.log(data.accessToken);
-    if (data.accessToken) return true;
-    return false;
-  })
-  .catch(err => {
-    return false;
-  });
 
-console.log(isAuthenticated);
-
-export const App = ({ location }) => (
-  <Router>
-    <div className="App">
-      <Route exact path="/" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/privacy-policy" component={PrivacyPolicy} />
-      <Route path="/forgotten-password" component={ForgottenPassword} />
-      <PrivateRoute path="/authenticated" component={Authenticated} />
-      <PrivateRoute path="/my-account" component={MyAccount} />
-      <PrivateRoute path="/change-password" component={ChangePassword} />
-      <Route component={NotFound} />
-    </div>
-  </Router>
-);
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-        //<Component {...props} />
-      )
+class App extends Component {
+  async componentDidMount() {
+    try {
+      if (await Auth.currentSession()) {
+        const userHasAuthenticated = true;
+      }
+    } catch (e) {
+      if (e !== "No current user") {
+        alert(e);
+      }
     }
-  />
-);
+  }
+
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/privacy-policy" component={PrivacyPolicy} />
+          <Route path="/forgotten-password" component={ForgottenPassword} />
+          <Route path="/authenticated" component={Authenticated} />
+          <Route path="/my-account" component={MyAccount} />
+          <Route path="/change-password" component={ChangePassword} />
+          <Route component={NotFound} />
+        </div>
+      </Router>
+    );
+  }
+}
 
 App.propTypes = {
   location: object

@@ -18,6 +18,13 @@ import {
 } from "./styles";
 
 class MyAccount extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userDetail: ""
+    };
+  }
+
   handleLogout = async event => {
     event.preventDefault();
     try {
@@ -27,6 +34,11 @@ class MyAccount extends Component {
       console.log(error);
     }
   };
+
+  async componentDidMount() {
+    let user = await Auth.currentAuthenticatedUser();
+    console.log(user);
+  }
 
   render() {
     return (
@@ -40,7 +52,10 @@ class MyAccount extends Component {
         </HeaderContainer>
         <SectionTitle>Your Details</SectionTitle>
         <NameInput placeholder="Name" />
-        <EmailInput placeholder="E-mail address" />
+        <EmailInput
+          placeholder="E-mail address"
+          value={this.state.userDetail.attributes.email}
+        />
         <SectionTitle>Units &amp; Measures</SectionTitle>
         <UnitToggleSwitch>
           <Option>Inches / Oz</Option>
