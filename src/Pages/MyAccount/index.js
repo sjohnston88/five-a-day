@@ -21,7 +21,7 @@ class MyAccount extends Component {
   constructor() {
     super();
     this.state = {
-      userDetail: ""
+      userEmail: ""
     };
   }
 
@@ -37,7 +37,7 @@ class MyAccount extends Component {
 
   async componentDidMount() {
     let user = await Auth.currentAuthenticatedUser();
-    console.log(user);
+    this.setState({ userEmail: user.attributes.email });
   }
 
   render() {
@@ -52,10 +52,7 @@ class MyAccount extends Component {
         </HeaderContainer>
         <SectionTitle>Your Details</SectionTitle>
         <NameInput placeholder="Name" />
-        <EmailInput
-          placeholder="E-mail address"
-          value={this.state.userDetail.attributes.email}
-        />
+        <EmailInput placeholder="E-mail address" value={this.state.userEmail} />
         <SectionTitle>Units &amp; Measures</SectionTitle>
         <UnitToggleSwitch>
           <Option>Inches / Oz</Option>
