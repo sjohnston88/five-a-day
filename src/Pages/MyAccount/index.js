@@ -21,7 +21,8 @@ class MyAccount extends Component {
   constructor() {
     super();
     this.state = {
-      userEmail: ""
+      userEmail: "",
+      userName: ""
     };
   }
 
@@ -35,9 +36,30 @@ class MyAccount extends Component {
     }
   };
 
+  handleNameChange = async event => {
+    event.preventDefault();
+    this.setState({ userName: event.target.value });
+  };
+
+  handleUpdateName = async event => {
+    event.preventDefault();
+    const user = await Auth.currentAuthenticatedUser();
+    try {
+      await Auth.updateUserAttributes(user, {
+        email: this.state.userEmail,
+        family_name: this.state.userName
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   async componentDidMount() {
-    let user = await Auth.currentAuthenticatedUser();
+    const user = await Auth.currentAuthenticatedUser();
     this.setState({ userEmail: user.attributes.email });
+    if (user.attributes.family_name) {
+      this.setState({ userName: user.attributes.family_name });
+    }
   }
 
   render() {
@@ -51,7 +73,12 @@ class MyAccount extends Component {
           </Home>
         </HeaderContainer>
         <SectionTitle>Your Details</SectionTitle>
-        <NameInput placeholder="Name" />
+        <NameInput
+          onChange={this.handleNameChange}
+          onBlur={this.handleUpdateName}
+          placeholder="Name"
+          value={this.state.userName}
+        />
         <EmailInput placeholder="E-mail address" value={this.state.userEmail} />
         <SectionTitle>Units &amp; Measures</SectionTitle>
         <UnitToggleSwitch>
