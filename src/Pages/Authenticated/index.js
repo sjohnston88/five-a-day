@@ -55,6 +55,8 @@ export class Authenticated extends React.Component {
     };
   }
 
+  getApplicationData = () => {};
+
   percentageCalculator = () => {
     return this.state.currentDay.length * 20;
   };
@@ -84,6 +86,12 @@ export class Authenticated extends React.Component {
     });
   };
 
+  nextDay = event => {
+    if (!this.state.date === "Today") {
+      //this.setState({ date: moment().format(`DD/MM/YY`) });
+    }
+  };
+
   clearSearchTerm = () => {
     this.setState({
       searchTerm: "",
@@ -104,7 +112,7 @@ export class Authenticated extends React.Component {
         <HeadsUpDisplay>
           <DisplayedDate> {this.state.date} </DisplayedDate>
           <AchievementContainer>
-            <PreviousDay />
+            <PreviousDay onClick={this.previousDay} />
             <CurrentDay>
               <SemiCircleProgressBar
                 diameter={210}
@@ -113,7 +121,7 @@ export class Authenticated extends React.Component {
                 stroke="darkorange"
               />
             </CurrentDay>
-            <Nextday />
+            <Nextday onClick={this.nextDay} />
           </AchievementContainer>
           <DisplayedTotal>
             {this.state.currentDay.length > 5 ? (
